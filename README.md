@@ -1,4 +1,4 @@
-# router-demo
+# demo
 
 ## Project setup
 ```
