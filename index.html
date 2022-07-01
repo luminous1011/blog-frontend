@@ -6,24 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://unpkg.com/vue@3.2.12/dist/vue.global.js"></script>
-
+    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
-    <div id="app"></div>
-    <script> console.log(Vue)
-        const { createApp } = Vue
-        createApp({
-            data() {
-               return{
-                Vue:'111'
-               } 
-            },
-            template: `<div>{{ Vue }}</div>`
-        }
-        ).mount('#app')
-    // const {created}
+    <div id="app">
+        <div>
+            <header id="header" class="header bg-white animated">
+                <div class="navBar-container">
+                    <div class="front"><a href="#">在线简历</a></div>
+                    <div>
+                        <a>个人简介</a>
+                        <a>工作经历</a>
+                        <a>项目经验</a>
+                        <a>u趣的</a>
+                        <a>contact</a>
+                    </div>
+                </div>
+            </header>
+            <main></main>
+            <footer></footer>
+        </div>
+
+    </div>
+    <script src="./js/eventListers.js">
     </script>
 </body>
 
