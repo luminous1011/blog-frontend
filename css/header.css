@@ -18,6 +18,7 @@
 .header div a {
     color: #313131;
     outline: 0;
+    text-decoration: none;
 }
 
 .navBar-container {
@@ -28,9 +29,28 @@
     margin: 0 auto;
 }
 
-.navBar-container div:last-child {
+.navBar-container .icon {
+    display: none;
+    top: 50%;
+    margin-top: -9px;
+}
+
+.navBar-container .icon span,
+.navBar-container .icon::after,
+.navBar-container .icon::before {
+    content: '';
+    margin: 3px 0;
+    display: block;
+    width: 20px;
+    background: #313131;
+    height: 2px;
+}
+
+
+.navBar-container div:last-child,
+.navBar-container .icon {
     position: absolute;
-    right: 0;
+    right: 10px;
 }
 
 .navBar-container div:last-child a {
@@ -96,22 +116,14 @@
     backdrop-filter: blur(20px);
 }
 
-body {
-    font-family: 'Josefin Sans', 'PingFang SC', sans-serif;
-    background-color: #f3f3f3;
-}
 
-::-webkit-scrollbar{
-    width: 4px;
-    height: 4px;
-    background: #e4e4e4;
-}
-::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: #3ccc64;
-    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
-}
+@media screen and (max-width:700px) {
+    .navBar-container div:last-child {
+        display: none;
+    }
 
-#app {
-    height: 1800px;
+    .navBar-container .icon {
+        display: inline-block;
+        right: 30px;
+    }
 }
