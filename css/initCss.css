@@ -15,7 +15,9 @@ a {
     outline: 0;
     text-decoration: none;
 }
-
+a:any-link{
+    cursor: pointer;
+}
 ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
