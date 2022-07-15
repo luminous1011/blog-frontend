@@ -2,7 +2,7 @@
   <AdminHeader />
   <router-view />
 </template>
-<script type="ts" setup>
+<script lang="ts" setup>
 import AdminHeader from "@/components/header/Header.vue";
 </script>
 

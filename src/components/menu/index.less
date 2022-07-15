@@ -1,0 +1,49 @@
+.H5_menu.icon {
+    display: none;
+    top: 50%;
+    margin-top: -9px;
+  }
+  
+  .H5_menu.icon span,
+  .H5_menu.icon::after,
+  .H5_menu.icon::before {
+    position: relative;
+    content: "";
+    margin: 3px 0 0;
+    display: block;
+    width: 20px;
+    background: #313131;
+    height: 2px;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    -webkit-transform-origin: 50% 50% 0;
+    -ms-transform-origin: 50% 50% 0;
+    transform-origin: 50% 50% 0;
+  }
+  .H5_menu.icon.cross::before,
+  .H5_menu.icon.cross::after {
+    background: #eb5055;
+  }
+  .H5_menu.icon.cross::before {
+    top: 5px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-box-shadow: 0 0 0 #fff;
+    box-shadow: 0 0 0 #fff;
+  }
+  .H5_menu.icon.cross::after {
+    bottom: 5px;
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  .H5_menu.icon.cross span {
+    opacity: 0;
+  }
+  @media screen and (max-width: 700px) {
+    .H5_menu.icon {
+      display: inline-block;
+      right: 30px;
+    }
+  }
