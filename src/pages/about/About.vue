@@ -1,3 +1,3 @@
 <template>
-    <div class="about"></div>
+    <div class="about">关于</div>
 </template>
