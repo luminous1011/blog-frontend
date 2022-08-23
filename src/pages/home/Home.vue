@@ -33,16 +33,7 @@
                   简单科学上网
                 </a>
               </div>
-              <div class="item_meta">
-                <i class="font fa-clock-o" aria-hidden></i
-                >&nbsp;2022-07-18&nbsp;&nbsp;
-                <i class="font fa-tags" aria-hidden></i
-                >&nbsp;点滴记录&nbsp;&nbsp;
-                <i class="font fa-comments-o" aria-hidden></i
-                >&nbsp;8评论&nbsp;&nbsp;
-                <i class="font fa-eye" aria-hidden></i
-                >&nbsp;2232浏览&nbsp;&nbsp;
-              </div>
+              <Meta class="item_meta" :meta="meta" />
               <p class="thumb_subtitle">
                 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...
               </p>
@@ -55,6 +46,9 @@
 </template>
 
 <script lang="ts" setup>
+import Meta from "@/components/meta/Meta.vue";
+
+const meta ={date:"2022-07-20",tag:"Web笔记",comments:8,view:2232 }
 </script>
 
 <style scoped lang="less">

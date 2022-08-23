@@ -1,18 +1,19 @@
 <template>
-    <div class="about">关于</div>
-  <div>
-    let a = 10
-  </div>
-    <code lang="javascript" mode="dark">
-
-      let a = 10
-    </code>
-  <Code
-      style="width: 400px"
-      code="const a = 10;
-function add(){}
-"></Code>
+    <div class="about">
+      <Title>关于</Title>
+      <Meta class="item_meta" :meta="meta" />
+    </div>
 </template>
 <script lang="ts" setup>
-import Code from "@/components/code/Code.vue";
+import Meta from "@/components/meta/Meta.vue";
+import Title from '@/components/title/Title.vue'
+
+const meta ={date:"2022-07-20",comments:8,view:122 }
+
 </script>
+
+<style lange="less">
+.about{
+  padding: 60px 25px 20px;
+}
+</style>
