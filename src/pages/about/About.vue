@@ -7,7 +7,12 @@
 
       let a = 10
     </code>
-  <highlightjs code="const a = 10;
+  <Code
+      style="width: 400px"
+      code="const a = 10;
 function add(){}
-"></highlightjs>
+"></Code>
 </template>
+<script lang="ts" setup>
+import Code from "@/components/code/Code.vue";
+</script>
