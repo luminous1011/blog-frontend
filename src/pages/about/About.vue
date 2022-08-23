@@ -19,13 +19,13 @@
       </a>
     </div>
     <div class="about_contact clearfix">
-      <a href="" target="_blank">
+      <a href="http://wpa.qq.com/msgrd?v=3&uin=1980393754&site=qq&menu=yes" target="_blank">
         <div class="qq">
           <span class="content">1980393754</span>
           <i class="fa fa-qq"></i>
         </div>
       </a>
-       <a href="" target="_blank">
+       <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=aRkDGhkIBykPBhEECAAFRwoGBA" target="_blank">
         <div class="email">
           <span class="content">pjspan@foxmail.com</span>
           <i class="fa fa-envelope-o"></i>
