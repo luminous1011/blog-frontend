@@ -7,7 +7,7 @@ export default function () {
     const scrollSwitch = ref(false);
     let windowPageYOffsetPrev: number;
     document.addEventListener("scroll", () => {
-        if (window.pageYOffset > windowPageYOffsetPrev && window.pageYOffset > 0) {
+        if (window.pageYOffset > windowPageYOffsetPrev && window.pageYOffset > 30) {
             //页面偏移量大于滚动条上次记录的位置
             scrollSwitch.value = true;
         } else {

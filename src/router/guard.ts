@@ -5,7 +5,7 @@ import 'nprogress/nprogress.css'
 NProgress.configure({ showSpinner: false })
 
 const progressStart = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-    if (NProgress.isStarted()) {
+    if (!NProgress.isStarted()) {
         NProgress.start()
         console.error(1);
 

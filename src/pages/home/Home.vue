@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <main class="main_content clearfix index_page main_page">
       <div class="lists">
         <div>
           <div class="lists_item">
@@ -41,7 +40,6 @@
           </div>
         </div>
       </div>
-    </main>
   </div>
 </template>
 
