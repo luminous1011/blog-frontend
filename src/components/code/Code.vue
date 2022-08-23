@@ -4,12 +4,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, toRefs } from "vue";
+import { defineProps, ExtractPropTypes, toRefs } from "vue";
 
-interface Props {
-  code: string;
-}
-const props: Readonly<ExtractPropTypes<{ code: StringConstructor }>> = defineProps({
+const props = defineProps({
   code: String,
 });
 const { code } = toRefs(props);
