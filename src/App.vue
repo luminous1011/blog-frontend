@@ -37,6 +37,7 @@ import AdminHeader from "@/components/header/Header.vue";
   margin: 0 auto;
 }
 
+//页面切换动画
 @keyframes fade-in {
   0% {
     transform: translateY(20px);
@@ -47,5 +48,10 @@ import AdminHeader from "@/components/header/Header.vue";
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+//进度条颜色
+#nprogress .bar {
+  background: #3ccc64 !important;
 }
 </style>

@@ -10,25 +10,16 @@
       </p>
     </div>
     <a :href="GITHUB_CONTACT_URL" target="_blank">
-      <img
-        id="githubChart"
-        :src="GITHUB_CHART_URL"
-      />
+      <img id="githubChart" :src="GITHUB_CHART_URL" />
     </a>
     <div class="about_contact clearfix">
-      <a
-        :href="QQ_CONTACT_URL"
-        target="_blank"
-      >
+      <a :href="QQ_CONTACT_URL" target="_blank">
         <div class="qq">
           <span class="content">1980393754</span>
           <i class="fa fa-qq"></i>
         </div>
       </a>
-      <a
-        :href="MAIL_CONTACT_URL"
-        target="_blank"
-      >
+      <a :href="MAIL_CONTACT_URL" target="_blank">
         <div class="email">
           <span class="content">pjspan@foxmail.com</span>
           <i class="fa fa-envelope-o"></i>
@@ -49,19 +40,18 @@
 </template>
 
 <script lang="ts" setup>
-const GITHUB_CONTACT_URL="https://github.com/luminous1011"
-const GITHUB_CHART_URL="https://ghchart.rshah.org/419c58/luminous1011"
-const QQ_CONTACT_URL="http://wpa.qq.com/msgrd?v=3&uin=1980393754&site=qq&menu=yes"
-const MAIL_CONTACT_URL="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=aRkDGhkIBykPBhEECAAFRwoGBA"
 import Meta from "@/components/meta/Meta.vue";
 import Title from "@/components/title/Title.vue";
-
-
-
+import {
+  GITHUB_CHART_URL,
+  GITHUB_CONTACT_URL,
+  MAIL_CONTACT_URL,
+  QQ_CONTACT_URL,
+} from "@/utils/utils";
 
 const meta = { date: "2022-07-20", comments: 8, view: 122 };
 </script>
 
 <style lang="less">
-@import './index.less';
+@import "./index.less";
 </style>
