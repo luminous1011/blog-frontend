@@ -11,6 +11,15 @@ const routes: Array<RouteRecordRaw> = [
         name: "about",
         component: () => import('@/pages/about/About.vue'),
     },
+    {
+        path: "/essaypoetry",
+        name: "essaypoetry",
+        component: () => import('@/pages/essayPoetry/EssayPoetry.vue'),
+    },
+    // {
+    //     path: "*",
+    //     redirect:"/"
+    // },
 ];
 
 export default routes

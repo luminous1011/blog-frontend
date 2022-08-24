@@ -11,7 +11,7 @@
         <router-link class="item" to="#">摄影</router-link>
         <router-link class="item" to="#">WEB</router-link>
         <router-link class="item" to="#">JAVA</router-link>
-        <router-link class="item" to="#">随笔</router-link>
+        <router-link class="item" to="/essaypoetry">随笔</router-link>
         <router-link class="item" to="#">友链</router-link>
         <!-- <a>u趣的</a> -->
         <router-link class="item" to="/about">关于</router-link>
