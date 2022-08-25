@@ -8,8 +8,22 @@
       <div class="front"><router-link to="/">xxxx</router-link></div>
       <div :class="[menuState ? 'on' : '', 'menu']">
         <ul>
-          <li>
-            <router-link to="#">点滴记录</router-link>
+          <li class="menu_categorys">
+            <router-link to="#">分类</router-link>
+            <ul>
+              <li>
+                <router-link to="#">点滴记录</router-link>
+              </li>
+               <li>
+                <router-link to="#">资源分享</router-link>
+              </li>
+               <li>
+                <router-link to="#">一些代码</router-link>
+              </li>
+               <li>
+                <router-link to="#">力扣解析</router-link>
+              </li>
+            </ul>
           </li>
           <li>
             <router-link to="#">摄影</router-link>
