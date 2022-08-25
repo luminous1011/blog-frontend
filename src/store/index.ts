@@ -1,9 +1,14 @@
 import { createStore } from "vuex";
-
 export default createStore({
-  state: {},
+  state: {
+    menuState: false,
+  },
   getters: {},
-  mutations: {},
+  mutations: {
+    setMenuState(state, menuState) {
+      state.menuState = menuState;
+    },
+  },
   actions: {},
   modules: {},
 });

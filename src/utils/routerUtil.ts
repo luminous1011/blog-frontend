@@ -10,7 +10,7 @@ import { IBootstrapProps } from '@/interface/bootstrap';
  */
 function loadGuards(guards:ILoadGuardsGuardsProps, options:IBootstrapProps) {
   const { beforeEach, afterEach } = guards;
-  const {router } = options
+  const { router,store } = options
   beforeEach.forEach((guard) => {
     if (guard && typeof guard === "function") {
       router.beforeEach(async (to, from, next) => guard(to, from, next));
@@ -18,7 +18,7 @@ function loadGuards(guards:ILoadGuardsGuardsProps, options:IBootstrapProps) {
   });
   afterEach.forEach((guard) => {
     if (guard && typeof guard === "function") {
-      router.afterEach(async () => guard());
+      router.afterEach(async () => guard(store));
     }
   });
 }
