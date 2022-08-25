@@ -40,7 +40,7 @@ import img from '@/assets/2.jpg'
 
 const meta = { date: "2022-07-20", comments: 18, view: 188 };
 const arr = [
-    {content:"最近睡的晚，食三餐，睡五个小时的觉，原来志摩的诗里，夏虫永不沉默。",createdTime:'2022-06-18 04:00'},
+    {content:"最近睡的晚，食三餐，睡五个小时的觉，听楼下的蛐蛐儿叫，原来志摩的诗里，夏虫永不沉默。",createdTime:'2022-06-18 04:00'},
     {img,createdTime:'2022-06-18 00:00'},
 ]
 
