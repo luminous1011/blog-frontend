@@ -17,7 +17,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/pages/essayPoetry/EssayPoetry.vue'),
     },
     // {
-    //     path: "*",
+    //     path: "/*",
     //     redirect:"/"
     // },
 ];

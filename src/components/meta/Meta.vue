@@ -16,13 +16,19 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, toRefs } from "vue";
+import { defineProps, toRefs,PropType } from "vue";
+interface IMeta{
+  date:number,
+  comments:number,
+  view:number,
+  tag?:string,
+}
 
 const props = defineProps({ 
-  meta: Object,
+  meta: Object as PropType<IMeta>,
 });
 
-const { meta } = toRefs(props);
+const { meta={} } = toRefs(props);
 </script>
 
 <style>
