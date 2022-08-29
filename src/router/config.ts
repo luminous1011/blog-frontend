@@ -16,6 +16,11 @@ const routes: Array<RouteRecordRaw> = [
         name: "essaypoetry",
         component: () => import('@/pages/essayPoetry/EssayPoetry.vue'),
     },
+    {
+        path: "/music",
+        name: "music",
+        component: () => import('@/pages/music/Music.vue'),
+    },
     // {
     //     path: "/*",
     //     redirect:"/"

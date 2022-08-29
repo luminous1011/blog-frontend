@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "@highlightjs/vue-plugin": "^2.1.0",
+    "@moefe/vue-aplayer": "^2.0.0-beta.5",
     "@types/axios": "^0.14.0",
     "@types/js-cookie": "^3.0.2",
     "@types/node": "^18.7.13",
+    "aplayer": "^1.10.1",
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "highlight.js": "^11.6.0",
