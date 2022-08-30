@@ -1,24 +1,14 @@
-<!--
- <!--
- * @Author: MK
- * @Date: 2021-12-16 15:41:47
- * @LastEditTime: 2021-12-24 11:17:45
- * @LastEditors: MK
- * @Description: APlayer组件化
- * @FilePath: \vue-mk-blog\src\components\APlayer.vue
--->
 <template>
-  <div ref="playerRef"></div>
+  <div ref="playerRef" class="playerRef"></div>
 </template>
 
 <script lang="ts" setup>
-import http from '@/api/http'
-import APlayer from 'APlayer';
-import 'APlayer/dist/APlayer.min.css';
-import type {PropType} from '@vue/runtime-core';
-import {nextTick, onBeforeUnmount, onMounted, ref} from 'vue'
+import type { APlayer } from "@moefe/vue-aplayer";
+import type { PropType } from "@vue/runtime-core";
+import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
+import { getMusic } from "@/api/music";
 
-const playerRef = ref()
+const playerRef = ref();
 let instance: APlayer;
 
 // APlayer歌曲信息
@@ -34,7 +24,13 @@ class Audio {
   // 歌词
   lrc: String;
 
-  constructor(artist: String, name: String, url: String, cover: String, lrc: String) {
+  constructor(
+    artist: String,
+    name: String,
+    url: String,
+    cover: String,
+    lrc: String
+  ) {
     this.artist = artist;
     this.name = name;
     this.url = url;
@@ -47,37 +43,37 @@ const props = defineProps({
   // 开启吸底模式
   fixed: {
     type: Boolean as PropType<boolean>,
-    default: true
+    default: false,
   },
   // 开启迷你模式
   mini: {
     type: Boolean as PropType<boolean>,
-    default: true
+    default: false,
   },
   // 音频自动播放
   autoplay: {
     type: Boolean as PropType<boolean>,
-    default: false
+    default: false,
   },
   // 主题色
   theme: {
     type: String as PropType<string>,
-    default: 'rgba(255,255,255,0.2)'
+    default: "rgba(255,255,255,0.2)",
   },
   // 音频循环播放
   loop: {
-    type: String as PropType<'all' | 'one' | 'none'>,
-    default: 'all'
+    type: String as PropType<"all" | "one" | "none">,
+    default: "all",
   },
   // 音频循环顺序
   order: {
-    type: String as PropType<'list' | 'random'>,
-    default: 'random'
+    type: String as PropType<"list" | "random">,
+    default: "random",
   },
   // 预加载
   preload: {
-    type: String as PropType<'auto' | 'metadata' | 'none'>,
-    default: 'auto'
+    type: String as PropType<"auto" | "metadata" | "none">,
+    default: "auto",
   },
   // 默认音量
   volume: {
@@ -85,78 +81,99 @@ const props = defineProps({
     default: 0.7,
     validator: (value: Number) => {
       return value >= 0 && value <= 1;
-    }
+    },
   },
   // 歌曲服务器(netease-网易云, tencent-qq音乐, kugou-酷狗, xiami-小米音乐, baidu-百度音乐)
   songServer: {
-    type: String as PropType<'netease' | 'tencent' | 'kugou' | 'xiami' | 'baidu'>,
-    default: 'netease'
+    type: String as PropType<
+      "netease" | "tencent" | "kugou" | "xiami" | "baidu"
+    >,
+    default: "netease",
   },
   // 播放类型(song-歌曲, playlist-播放列表, album-专辑, search-搜索, artist-艺术家)
   songType: {
     type: String as PropType<string>,
-    default: 'playlist'
+    default: "playlist",
   },
   // 歌的id
   songId: {
     type: String as PropType<string>,
-    default: '19723756'
+    default: "19723756",
   },
   // 互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器
   mutex: {
     type: Boolean as PropType<boolean>,
-    default: true
+    default: true,
   },
   // 传递歌词方式
   lrcType: {
     type: Number as PropType<number>,
-    default: 3
+    default: 3,
   },
   // 列表是否默认折叠
   listFolded: {
     type: Boolean as PropType<boolean>,
-    default: true
+    default: false,
   },
   // 列表最大高度
   listMaxHeight: {
     type: String as PropType<string>,
-    default: '100px'
+    default: "100px",
   },
   // 存储播放器设置的 localStorage key
   storageName: {
     type: String as PropType<string>,
-    default: 'aplayer-setting'
-  }
-})
+    default: "aplayer-setting",
+  },
+});
 
 // 初始化
 onMounted(() => {
   nextTick(() => {
-    http.player.getSongSheet(props.songServer, props.songType, props.songId)
-      .then(res => {
-        let audioList = res.data.map(value => new Audio(value.author, value.title, value.url, value.pic, value.lrc));
-        instance = new APlayer({
-          container: playerRef.value,
-          fixed: props.fixed,
-          mini: props.mini,
-          autoplay: props.autoplay,
-          theme: props.theme,
-          loop: props.loop,
-          order: props.order,
-          preload: props.preload,
-          volume: props.volume,
-          mutex: props.mutex,
-          lrcType: props.lrcType,
-          listFolded: props.listFolded,
-          listMaxHeight: props.listMaxHeight,
-          storageName: props.storageName,
-          audio: audioList
-        })
-      })
-  })
-})
+    getMusic({
+      server: props.songServer,
+      type: props.songType,
+      id: props.songId,
+    }).then((res) => {
+      let arr = [res.data[0]];
+      if(props.songType==='playlist') arr = res.data
+      let audioList = arr.map(
+        (value) =>
+          new Audio(value.author, value.title, value.url, value.pic, value.lrc)
+      );
+      instance = new APlayer({
+        container: playerRef.value,
+        fixed: props.fixed,
+        mini: props.mini,
+        autoplay: props.autoplay,
+        theme: props.theme,
+        loop: props.loop,
+        order: props.order,
+        preload: props.preload,
+        volume: props.volume,
+        mutex: props.mutex,
+        lrcType: props.lrcType,
+        listFolded: props.listFolded,
+        listMaxHeight: props.listMaxHeight,
+        storageName: props.storageName,
+        audio: audioList,
+      });
+    });
+  });
+});
 // 销毁
 onBeforeUnmount(() => {
-  instance.destroy()
-})
+  instance.destroy();
+});
 </script>
+
+<style>
+.playerRef {
+  width: 100%;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.aplayer-list , .aplayer-list ol  {
+    max-height: 360px !important;
+}
+</style>
