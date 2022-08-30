@@ -3,13 +3,13 @@
 </template>
 
 <script lang="ts" setup>
-import type { APlayer } from "@moefe/vue-aplayer";
+import type { APlayer as IAPlayer } from "@moefe/vue-aplayer";
 import type { PropType } from "@vue/runtime-core";
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import { getMusic } from "@/api/music";
 
 const playerRef = ref();
-let instance: APlayer;
+let instance: IAPlayer;
 
 // APlayer歌曲信息
 class Audio {
@@ -129,35 +129,33 @@ const props = defineProps({
 
 // 初始化
 onMounted(() => {
-  nextTick(() => {
-    getMusic({
-      server: props.songServer,
-      type: props.songType,
-      id: props.songId,
-    }).then((res) => {
-      let arr = [res.data[0]];
-      if(props.songType==='playlist') arr = res.data
-      let audioList = arr.map(
-        (value) =>
-          new Audio(value.author, value.title, value.url, value.pic, value.lrc)
-      );
-      instance = new APlayer({
-        container: playerRef.value,
-        fixed: props.fixed,
-        mini: props.mini,
-        autoplay: props.autoplay,
-        theme: props.theme,
-        loop: props.loop,
-        order: props.order,
-        preload: props.preload,
-        volume: props.volume,
-        mutex: props.mutex,
-        lrcType: props.lrcType,
-        listFolded: props.listFolded,
-        listMaxHeight: props.listMaxHeight,
-        storageName: props.storageName,
-        audio: audioList,
-      });
+  getMusic({
+    server: props.songServer,
+    type: props.songType,
+    id: props.songId,
+  }).then((res) => {
+    let arr = [res.data[0]];
+    if (props.songType === "playlist") arr = res.data;
+    let audioList = arr.map(
+      (value) =>
+        new Audio(value.author, value.title, value.url, value.pic, value.lrc)
+    );
+    instance = new APlayer({
+      container: playerRef.value,
+      fixed: props.fixed,
+      mini: props.mini,
+      autoplay: props.autoplay,
+      theme: props.theme,
+      loop: props.loop,
+      order: props.order,
+      preload: props.preload,
+      volume: props.volume,
+      mutex: props.mutex,
+      lrcType: props.lrcType,
+      listFolded: props.listFolded,
+      listMaxHeight: props.listMaxHeight,
+      storageName: props.storageName,
+      audio: audioList,
     });
   });
 });
@@ -173,7 +171,8 @@ onBeforeUnmount(() => {
   margin: 0;
   margin-bottom: 20px;
 }
-.aplayer-list , .aplayer-list ol  {
-    max-height: 360px !important;
+.aplayer-list,
+.aplayer-list ol {
+  max-height: 360px !important;
 }
 </style>
