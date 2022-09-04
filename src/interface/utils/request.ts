@@ -1,9 +1,12 @@
-export interface IMethod{
-    GET:string,
-    POST:string,
+import {
+    Method,
+} from "axios";
+export interface IMethod {
+    GET: Method,
+    POST: Method,
 }
 
-export interface IRESULT_CODE{
+export interface IRESULT_CODE {
     SUCCESS: number, // 成功(默认值)
     INVALID_ARGUMENT: number, // 参数不合法
     PERMISSION_DENIED: number, // 没有权限

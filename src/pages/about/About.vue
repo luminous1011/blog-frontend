@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about container">
     <header>
       <Title>关于</Title>
       <Meta class="item_meta" :meta="meta" />

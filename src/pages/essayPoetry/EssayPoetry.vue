@@ -1,5 +1,5 @@
 <template>
-  <div class="essayPoetry">
+  <div class="essayPoetry container">
     <header>
       <Title>随笔</Title>
       <Meta class="item_meta" :meta="meta" />

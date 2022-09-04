@@ -4,7 +4,7 @@
       <AdminHeader />
     </header>
     <main>
-      <router-view class="main_content clearfix index_page main_page"/>
+      <router-view class="main_content clearfix index_page main_page" />
     </main>
     <footer></footer>
   </div>
@@ -18,6 +18,7 @@ import AdminHeader from "@/components/header/Header.vue";
 @import "./theme/index.less";
 @import "../src/font/css/font-awesome.min.css";
 @import "./font/font.less";
+/** 页面布局*/
 .index-page {
   padding: 70px 0 0;
 }
@@ -32,9 +33,20 @@ import AdminHeader from "@/components/header/Header.vue";
   animation: fade-in;
   animation-duration: 0.5s;
 }
-.index_page{
+
+.index_page {
   max-width: 970px;
   margin: 0 auto;
+}
+
+.container {
+  padding: 60px 25px 20px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 30px 25px 20px;
+  }
 }
 
 //页面切换动画
