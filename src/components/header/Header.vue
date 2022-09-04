@@ -26,13 +26,13 @@
             </ul>
           </li>
           <li>
-            <router-link to="#">摄影</router-link>
+            <router-link to="/photos">摄影</router-link>
           </li>
           <li>
-            <router-link to="#">WEB</router-link>
+            <router-link to="/web">WEB</router-link>
           </li>
           <li>
-            <router-link to="#">JAVA</router-link>
+            <router-link to="/java">JAVA</router-link>
           </li>
           <li>
             <router-link to="/essaypoetry">随笔</router-link>
@@ -41,7 +41,7 @@
             <router-link to="/music">音乐</router-link>
           </li>
           <li>
-            <router-link to="#">友链</router-link>
+            <router-link to="/friends">友链</router-link>
           </li>
           <li>
             <router-link to="/about">关于</router-link>
