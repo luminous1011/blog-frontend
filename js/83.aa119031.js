@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunkdemo"]=self["webpackChunkdemo"]||[]).push([[83],{89:function(n,r){r.Z=(n,r)=>{const e=n.__vccOpts||n;for(const[t,u]of r)e[t]=u;return e}},8083:function(n,r,e){e.r(r),e.d(r,{default:function(){return s}});var t=e(9199);function u(n,r){return(0,t.wg)(),(0,t.iD)("div",null,"friends")}var c=e(89);const o={},f=(0,c.Z)(o,[["render",u]]);var s=f}}]);
