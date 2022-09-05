@@ -282,7 +282,7 @@ const load = () => {
   background: #000;
   width: 100%;
   max-width: unset;
-  margin: 5px auto;
+  margin: 0 auto;
   padding-top: 30px;
 }
 

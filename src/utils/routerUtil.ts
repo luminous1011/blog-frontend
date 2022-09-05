@@ -1,5 +1,5 @@
 import Router from "vue-router";
-import {ILoadGuardsGuardsProps} from '@/interface/utils/routerUtil'
+import { ILoadGuardsGuardsProps } from '@/interface/utils/routerUtil'
 import { IBootstrapProps } from '@/interface/bootstrap';
 
 
@@ -8,12 +8,12 @@ import { IBootstrapProps } from '@/interface/bootstrap';
  * @param guards
  * @param options
  */
-function loadGuards(guards:ILoadGuardsGuardsProps, options:IBootstrapProps) {
+function loadGuards(guards: ILoadGuardsGuardsProps, options: IBootstrapProps) {
   const { beforeEach, afterEach } = guards;
-  const { router,store } = options
+  const { router, store } = options
   beforeEach.forEach((guard) => {
     if (guard && typeof guard === "function") {
-      router.beforeEach(async (to, from, next) => guard(to, from, next));
+      router.beforeEach(async (to, from, next) => guard(to, from, next, options));
     }
   });
   afterEach.forEach((guard) => {
@@ -24,5 +24,5 @@ function loadGuards(guards:ILoadGuardsGuardsProps, options:IBootstrapProps) {
 }
 
 export {
-    loadGuards
+  loadGuards
 }

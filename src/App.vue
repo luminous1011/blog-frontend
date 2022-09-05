@@ -1,7 +1,7 @@
 <template>
   <div class="index-page">
     <header>
-      <AdminHeader />
+      <AdminHeader :class="[headerTheme]"/>
     </header>
     <main>
       <router-view class="main_content clearfix index_page main_page" />
@@ -12,6 +12,10 @@
 
 <script lang="ts" setup >
 import AdminHeader from "@/components/header/Header.vue";
+import {computed} from 'vue'
+import {useStore} from 'vuex'
+ const store = useStore()
+ const headerTheme= computed(()=>store.state.theme)
 </script>
 
 <style lang="less">
