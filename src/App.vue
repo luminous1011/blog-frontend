@@ -1,5 +1,5 @@
 <template>
-  <div class="index-page">
+  <div :class="['index-page',bgTheme]">
     <header>
       <AdminHeader :class="[headerTheme]"/>
     </header>
@@ -16,6 +16,7 @@ import {computed} from 'vue'
 import {useStore} from 'vuex'
  const store = useStore()
  const headerTheme= computed(()=>store.state.theme)
+ const bgTheme= computed(()=>store.state.bgColor)
 </script>
 
 <style lang="less">
@@ -25,7 +26,11 @@ import {useStore} from 'vuex'
 /** 页面布局*/
 .index-page {
   padding: 70px 0 0;
+  &.cus-bg-dark{
+    background: #000;
+  }
 }
+
 .index_page {
   max-width: 100%;
   margin: 0;

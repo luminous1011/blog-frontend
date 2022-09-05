@@ -1173,13 +1173,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/imagesloaded@^4.1.2":
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/@types/imagesloaded/-/imagesloaded-4.1.2.tgz#da743c8d9f4a04f795e99d7921aae7c20af5d2e1"
-  integrity sha512-QxpoYhaYgv1qXwwPd6EnQFLkzrRZaecIafPsY51fnrsr+qIh0wrPVaOQirBaFl+FjFHk5BMfpf+6QHy0lRrcNw==
-  dependencies:
-    "@types/jquery" "*"
-
 "@types/jquery@*":
   version "3.5.14"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.14.tgz#ac8e11ee591e94d4d58da602cb3a5a8320dee577"
@@ -2938,11 +2931,6 @@ ev-emitter@^1.0.0:
   resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.1.1.tgz#8f18b0ce5c76a5d18017f71c0a795c65b9138f2a"
   integrity sha512-ipiDYhdQSCZ4hSbX4rMW+XzNKMD1prg/sTvoVmSLkuQ1MVlwjJQQA+sW8tMYR3BLUr9KjodFV4pvzunvRhd33Q==
 
-ev-emitter@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-2.1.2.tgz#91737a2deae9fa95453e7e86cfae976f8c3ced38"
-  integrity sha512-jQ5Ql18hdCQ4qS+RCrbLfz1n+Pags27q5TwMKvZyhp5hh2UULUYZUy1keqj6k6SYsdqIYjnmz7xyyEY0V67B8Q==
-
 event-pubsub@4.3.0:
   version "4.3.0"
   resolved "https://registry.npmmirror.com/event-pubsub/-/event-pubsub-4.3.0.tgz"
@@ -3496,13 +3484,6 @@ image-size@~0.5.0:
   resolved "https://registry.npmmirror.com/image-size/-/image-size-0.5.5.tgz"
   integrity sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==
 
-imagesloaded@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/imagesloaded/-/imagesloaded-5.0.0.tgz#e614e5de482769dd7d571ca62d947d0d00183847"
-  integrity sha512-/0JGSubc1MTCoDKVmonLHgbifBWHdyLkun+R/151E1c5n79hiSxcd7cB7mPXFgojYu8xnRZv7GYxzKoxW8BetQ==
-  dependencies:
-    ev-emitter "^2.1.2"
-
 import-fresh@^3.1.0, import-fresh@^3.2.1:
   version "3.3.0"
   resolved "https://registry.npmmirror.com/import-fresh/-/import-fresh-3.3.0.tgz"
@@ -3688,7 +3669,7 @@ jquery-bridget@^3.0.1:
   dependencies:
     jquery ">=1.4.2 <4"
 
-"jquery@>=1.4.2 <4", jquery@^3.6.1:
+"jquery@>=1.4.2 <4":
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.1.tgz#fab0408f8b45fc19f956205773b62b292c147a16"
   integrity sha512-opJeO4nCucVnsjiXOE+/PcCgYw9Gwpvs/a6B1LL/lQhwWwpbVEVYDZ1FokFr8PRc7ghYlrFPuyHuiiDNTQxmcw==
@@ -5667,11 +5648,6 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.npmmirror.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
-
-vue-lazyload@^3.0.0-rc.2:
-  version "3.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-3.0.0-rc.2.tgz#8a3daa598dcbb7349893d3bb39b50695049fb0d8"
-  integrity sha512-Cg7Gqb7jAoiImMPH3EMfAwJ8gZuFoBJCEtA7+TGRljrtktDtV7JAHIyKvuTgQR8DFAd7MhKi1Ys8QHdSrnGdZQ==
 
 vue-loader@^17.0.0:
   version "17.0.0"
