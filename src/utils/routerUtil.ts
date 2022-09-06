@@ -1,4 +1,3 @@
-import Router from "vue-router";
 import { ILoadGuardsGuardsProps } from '@/interface/utils/routerUtil'
 import { IBootstrapProps } from '@/interface/bootstrap';
 
