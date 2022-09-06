@@ -1,6 +1,7 @@
 import { nextTick, onUnmounted } from "vue";
 import JQueryBridget from "jquery-bridget";
 import Masonry from "masonry-layout";
+import { throttle } from '@/utils/utils'
 JQueryBridget("masonry", Masonry, $);
 
 /**
@@ -8,11 +9,10 @@ JQueryBridget("masonry", Masonry, $);
  */
 function useScreenResize() {
 
-  const handler = () => setTimeout(load, 500);
-  addEventListener("resize", handler);
+  addEventListener("resize", throttle(load,500));
 
   onUnmounted(() => {
-    removeEventListener("resize",handler);
+    removeEventListener("resize", throttle(load,500));
   });
 }
 

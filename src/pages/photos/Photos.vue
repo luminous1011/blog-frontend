@@ -214,17 +214,23 @@
 </template>
 
 <script lang="ts" setup>
-import { useScreenResize,load } from "./actions";
+import { useScreenResize, load } from "./actions";
 import { onMounted } from "vue";
 
 useScreenResize();
 
 onMounted(() => {
-  $("img.lazy").lazyload();
+  //设置延迟加载图片
+  setTimeout(
+    () =>
+      $("img.lazy").lazyload({
+        effect: "fadeIn",
+      }),
+    2000
+  );
 });
-
 </script>
 
 <style lang="less" scoped>
-@import './index.less';
+@import "./index.less";
 </style>
