@@ -1,7 +1,7 @@
 <template>
   <header
     id="header"
-    class="header bg-white animated"
+    class="header animated"
     :class="[scrollSwitch ? 'slideUp' : 'slideDown']"
   >
     <div class="navBar-container">
