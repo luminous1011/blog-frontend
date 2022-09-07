@@ -1,73 +1,96 @@
 #grid {
-    background: #000;
-    width: 100%;
-    max-width: unset;
-    margin: 0 auto;
-    padding-top: 30px;
+  background: #000;
+  width: 100%;
+  max-width: unset;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: calc(25% - 10px);
+  /* width: 33.333%; */
+  margin: 2px 5px 5px;
+  border-radius: 3px;
+  transition: linear 0.3s all;
+  background: #333;
+}
+
+@media (max-width: 1980px) {
+
+  .grid-sizer,
+  .grid-item {
+    width: calc(20% - 10px);
   }
-  
-  /* ---- .grid-item ---- */
-  
+}
+
+@media (max-width: 1880px) {
+
   .grid-sizer,
   .grid-item {
     width: calc(25% - 10px);
-    /* width: 33.333%; */
-    margin: 2px 5px 5px;
-    border-radius: 3px;
-    transition: linear 0.3s all;
-    background: #333;
   }
-  
-  @media (max-width: 1980px) {
-    .grid-sizer,
-    .grid-item {
-      width: calc(20% - 10px);
-    }
-  }
-  @media (max-width: 1880px) {
-    .grid-sizer,
-    .grid-item {
-      width: calc(25% - 10px);
-    }
-  }
-  @media (max-width: 1120px) {
-    .grid-sizer,
-    .grid-item {
-      width: calc(33.333% - 10px);
-    }
-  }
-  @media (max-width: 700px) {
-    .grid-sizer,
-    .grid-item {
-      width: calc(50% - 10px);
-    }
-  }
-  @media (max-width: 580px) {
-    .grid-sizer,
-    .grid-item {
-      width: calc(100% - 10px);
-    }
-  }
+}
+
+@media (max-width: 1120px) {
+
+  .grid-sizer,
   .grid-item {
-    float: left;
+    width: calc(33.333% - 10px);
   }
-  
-  .grid-item img {
-    display: block;
-    max-width: 100%;
-    transition: all 0.3s ease-in-out;
-    width: 100%;
+}
+
+@media (max-width: 700px) {
+
+  .grid-sizer,
+  .grid-item {
+    width: calc(50% - 10px);
   }
-  .image_info {
-    position: relative;
-    padding: 11px 10px;
-    text-align: center;
-    word-wrap: break-word;
-    font-size: 14px;
-    color: #999;
-    transition: all linear 0.3s;
-    &:hover {
-      background: #fff;
-      color: #333;
+}
+
+@media (max-width: 580px) {
+
+  .grid-sizer,
+  .grid-item {
+    width: calc(100% - 10px);
+  }
+}
+
+.grid-item {
+  float: left;
+
+  &:hover {
+    background: #fff;
+    color: #333;
+  }
+  &>div{
+    overflow: hidden;
+    &:first-child{
+      cursor: pointer;
     }
   }
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.image_info {
+  position: relative;
+  padding: 11px 10px;
+  text-align: center;
+  word-wrap: break-word;
+  font-size: 14px;
+  color: #999;
+  transition: all linear 0.3s;
+
+}

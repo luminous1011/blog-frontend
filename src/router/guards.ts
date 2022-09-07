@@ -46,7 +46,6 @@ const changeHeaderTheme = (
   options: IBootstrapProps
 ) => {
   const { store } = options
-  console.error(store);
   for (let i = 0; i < DARK_HEADERS.length; i++) {
     if (to.fullPath.includes(DARK_HEADERS[i])) {
       store.commit('setTheme', 'cus-header-dark')
