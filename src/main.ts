@@ -4,6 +4,8 @@ import router from "./router";
 import store from "./store";
 import bootstrap from "@/bootstrap";
 
+import 'animate.css/source/animate.css'
+
 // 引入highlight.js
 import 'highlight.js/styles/atom-one-dark.css'
 import 'highlight.js/lib/common'

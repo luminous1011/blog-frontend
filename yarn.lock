@@ -1856,6 +1856,11 @@ ajv@^8.0.0, ajv@^8.8.0:
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
+animate.css@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmmirror.com/animate.css/-/animate.css-4.1.1.tgz#614ec5a81131d7e4dc362a58143f7406abd68075"
+  integrity sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==
+
 ansi-escapes@^3.0.0:
   version "3.2.0"
   resolved "https://registry.npmmirror.com/ansi-escapes/-/ansi-escapes-3.2.0.tgz"
@@ -5630,6 +5635,11 @@ uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.npmmirror.com/uuid/-/uuid-8.3.2.tgz"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.npmmirror.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
