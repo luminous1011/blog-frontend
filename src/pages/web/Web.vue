@@ -1,23 +1,25 @@
 <template>
-  <div class="container">
+  <div class="container bg-white web-content">
     <header>
-      <Title>Web</Title>
-      <Meta class="item_meta" :meta="meta" />
+      <Field :archives="archives" />
     </header>
-    <main></main>
+    <main>
+    </main>
     <footer></footer>
   </div>
 </template>
 
 <script lang="ts" setup>
-import Meta from "@/components/meta/Meta.vue";
-import Title from "@/components/title/Title.vue";
+import Field from '@/components/field/Field.vue'
 
 
-const meta = { date: "2022-07-20", comments: 18, view: 188 };
-
+const archives ={posts:132,tags:366,commits:2288,views:279988}
 
 </script>
 
 <style lang="less">
+  .web-content {
+  max-width: unset;
+  min-height: calc(100vh - 70px);
+}
 </style>
