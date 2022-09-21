@@ -7,19 +7,24 @@
       <router-view class="main_content clearfix index_page main_page" />
     </main>
     <footer></footer>
+<TabsView/>
   </div>
 </template>
 
 <script lang="ts" setup >
 import AdminHeader from "@/components/header/Header.vue";
+import TabsView from '@/components/tabs/TabsView.vue'
+
 import {computed} from 'vue'
 import {useStore} from 'vuex'
+
  const store = useStore()
  const headerTheme= computed(()=>store.state.theme)
  const bgTheme= computed(()=>store.state.bgColor)
 </script>
 
 <style lang="less">
+@import 'ant-design-vue/dist/antd.css';
 @import "./theme/index.less";
 @import "../src/font/css/font-awesome.min.css";
 @import "./font/font.less";

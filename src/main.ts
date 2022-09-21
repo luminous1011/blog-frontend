@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import bootstrap from "@/bootstrap";
+import Antd from 'ant-design-vue'
 
 import 'animate.css/source/animate.css'
 
@@ -24,5 +25,6 @@ const app = createApp(App);
 app.use(store);
 app.use(router);
 app.use(hljs)
+app.use(Antd)
 
 app.mount("#app");

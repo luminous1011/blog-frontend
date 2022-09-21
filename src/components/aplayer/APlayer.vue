@@ -6,7 +6,7 @@
 import type { APlayer as IAPlayer } from "@moefe/vue-aplayer";
 import type { PropType } from "@vue/runtime-core";
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
-import { getMusic } from "@/api/music";
+import { getMusic } from "@/service/music";
 
 const playerRef = ref();
 let instance: IAPlayer;

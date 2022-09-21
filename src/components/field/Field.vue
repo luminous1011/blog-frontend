@@ -3,19 +3,19 @@
     <legend>统计信息</legend>
     <div class="archives-count">
       <div class="archives-item">
-        <code>{{archives.posts}}+</code>
+        <code>{{ archives.posts }}+</code>
         文章
       </div>
       <div class="archives-item">
-         <code>{{archives.tags}}+</code>
+        <code>{{ archives.tags }}+</code>
         标签
       </div>
       <div class="archives-item">
-         <code>{{archives.commits}}+</code>
+        <code>{{ archives.commits }}+</code>
         评论
       </div>
       <div class="archives-item">
-         <code>{{archives.views}}+</code>
+        <code>{{ archives.views }}+</code>
         浏览量
       </div>
     </div>
@@ -45,9 +45,9 @@ fieldset > legend {
   border-radius: 0.2em;
   padding: 0.2em 0.5em;
   font-size: 0.9em;
+  width: unset;
 }
 fieldset {
-  margin: 10px 20px 0px 20px;
   border: 0.06em dashed #d5d5d5;
   border-radius: 0.3em;
   padding-bottom: 15px;
@@ -60,14 +60,13 @@ fieldset {
   width: 100%;
   text-align: center;
   color: #666;
-  display: flex;
-  justify-content: space-around;
 }
 .archives-count .archives-item {
-  width: 100%;
+  width: 25%;
   padding: 0.4em 0 0.6em;
   border-radius: 0.3em;
-  &:hover{
+  display: inline-block;
+  &:hover {
     background: #e8e8e8;
   }
 }
@@ -82,5 +81,20 @@ fieldset {
   padding: 4px 7px 4px 7px;
   margin: 2px 4px;
   border-radius: 5px;
+  font-family: Consolas,'Microsoft YaHei', Monaco, Andale Mono, Ubuntu Mono, monospace;
+}
+
+@media (max-width: 800px) {
+  .archives-count code {
+    font-size: 14px;
+    text-overflow: clip;
+    margin-left: -6px;
+  }
+.archives-count code {
+    font-size: 15px;
+    text-overflow: clip;
+    margin-left: -6px;
+    margin-right: -6px;
+}
 }
 </style>
