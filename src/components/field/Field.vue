@@ -27,7 +27,7 @@ import { defineProps, toRefs, PropType } from "vue";
 interface Iarchives {
   tags: number;
   commits: number;
-  post: number;
+  posts: number;
   views: number;
 }
 
