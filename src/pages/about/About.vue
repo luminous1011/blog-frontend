@@ -13,7 +13,7 @@
         </p>
       </div>
       <a :href="GITHUB_CONTACT_URL" target="_blank">
-        <img id="githubChart" :src="GITHUB_CHART_URL" />
+        <img id="githubChart" :src="GITHUB_CHART_URL" alt="这是一张服务器在美国的图片，经常崩，给个备注表示不是我的技术问题"/>
       </a>
       <div class="about_contact clearfix">
         <a :href="QQ_CONTACT_URL" target="_blank">
