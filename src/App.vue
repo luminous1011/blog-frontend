@@ -1,37 +1,41 @@
 <template>
-  <div :class="['index-page',bgTheme]">
+  <div :class="['index-page', bgTheme]">
     <header>
-      <AdminHeader :class="[headerTheme]"/>
+      <AdminHeader :class="[headerTheme]" />
     </header>
     <main>
       <router-view class="main_content clearfix index_page main_page" />
     </main>
-    <footer></footer>
-<TabsView/>
+    <footer>
+      <AdminFooter  v-if="footerVisible" />
+    </footer>
+    <TabsView/>
   </div>
 </template>
 
-<script lang="ts" setup >
+<script lang="ts" setup>
 import AdminHeader from "@/components/header/Header.vue";
-import TabsView from '@/components/tabs/TabsView.vue'
+import AdminFooter from "@/components/footer/Footer.vue";
+import TabsView from "@/components/tabs/TabsView.vue";
 
-import {computed} from 'vue'
-import {useStore} from 'vuex'
+import { computed } from "vue";
+import { useStore } from "vuex";
 
- const store = useStore()
- const headerTheme= computed(()=>store.state.theme)
- const bgTheme= computed(()=>store.state.bgColor)
+const store = useStore();
+const headerTheme = computed(() => store.state.theme);
+const bgTheme = computed(() => store.state.bgColor);
+const footerVisible = computed(() => store.state.footerVisible);
 </script>
 
 <style lang="less">
-@import 'ant-design-vue/dist/antd.css';
+@import "ant-design-vue/dist/antd.css";
 @import "./theme/index.less";
 @import "../src/font/css/font-awesome.min.css";
 @import "./font/font.less";
 /** 页面布局*/
 .index-page {
   padding: 70px 0 0;
-  &.cus-bg-dark{
+  &.cus-bg-dark {
     background: #000;
   }
 }

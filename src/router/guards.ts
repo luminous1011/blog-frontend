@@ -50,10 +50,12 @@ const changeHeaderTheme = (
     if (to.fullPath.includes(DARK_HEADERS[i])) {
       store.commit('setTheme', 'cus-header-dark')
       store.commit('setBgColor', 'cus-bg-dark')
+      store.commit('setFooterVisible', false)
       break
     } else {
       store.commit('setTheme', 'cus-header-normal')
       store.commit('setBgColor', 'cus-bg-normal')
+      store.commit('setFooterVisible', true)
     }
   }
   next()

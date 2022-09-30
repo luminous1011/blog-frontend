@@ -6,6 +6,8 @@ export const GITHUB_CHART_URL: string = "https://ghchart.rshah.org/luminous1011"
 export const QQ_CONTACT_URL: string = "http://wpa.qq.com/msgrd?v=3&uin=1980393754&site=qq&menu=yes"
 export const MAIL_CONTACT_URL: string = "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=aRkDGhkIBykPBhEECAAFRwoGBA"
 
+export const BLOG_HOME: string = "http://47.93.60.137:9010"
+export const BLOG_FAVICON: string = "http://47.93.60.137:9010/favicon.png"
 
 /**
  * 节流函数（一段时间内只触发一次）

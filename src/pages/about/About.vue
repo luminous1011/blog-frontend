@@ -1,4 +1,6 @@
 <template>
+  <div>
+
   <div class="about container">
     <header>
       <Title>关于</Title>
@@ -13,7 +15,11 @@
         </p>
       </div>
       <a :href="GITHUB_CONTACT_URL" target="_blank">
-        <img id="githubChart" :src="GITHUB_CHART_URL" alt="这是一张服务器在美国的图片，经常崩，给个备注表示不是我的技术问题"/>
+        <img
+          id="githubChart"
+          :src="GITHUB_CHART_URL"
+          alt="这是一张服务器在美国的图片，经常崩，给个备注表示不是我的技术问题"
+        />
       </a>
       <div class="about_contact clearfix">
         <a :href="QQ_CONTACT_URL" target="_blank">
@@ -41,11 +47,15 @@
       <p>如侵犯他人著作权、名誉权、隐私权及肖像权等请联系本站删除。</p>
     </footer>
   </div>
+  <Comment />
+</div>
+
 </template>
 
 <script lang="ts" setup>
 import Meta from "@/components/meta/Meta.vue";
 import Title from "@/components/title/Title.vue";
+import Comment from "@/components/comment/Comment.vue";
 import {
   GITHUB_CHART_URL,
   GITHUB_CONTACT_URL,

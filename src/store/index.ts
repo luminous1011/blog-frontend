@@ -4,6 +4,7 @@ export default createStore({
     menuState: false,
     theme: "",
     bgColor: "",
+    footerVisible:true
   },
   getters: {},
   mutations: {
@@ -15,6 +16,11 @@ export default createStore({
     },
     setBgColor(state, bgColor) {
       state.bgColor = bgColor;
+    },
+    setFooterVisible(state,footerVisible ) {
+      state.footerVisible = footerVisible;
+      console.error(footerVisible);
+      
     },
   },
   actions: {},
