@@ -6,6 +6,23 @@
   >
     <div class="grid-sizer"></div>
     <div class="grid-item">
+      <div class="image_info">
+        <h1><center>Luminous1011's plog</center></h1>
+        <p>
+          不是每个人都能成为摄影师，但好的摄影作品可以出自于任何人。
+          <br />
+          我永远期待镜头中无法预期的下一刻。
+        </p>
+        <p>
+          <router-link to="/">首页</router-link>
+          &nbsp;·&nbsp;
+          <router-link to="/essaypoetry">随笔</router-link>
+          &nbsp;·&nbsp;
+          <router-link to="/about">关于</router-link>
+        </p>
+      </div>
+    </div>
+    <div class="grid-item">
       <div>
         <div>
           <img

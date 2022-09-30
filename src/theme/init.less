@@ -1,42 +1,69 @@
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: transparent; //去除移动端点击高亮效果
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent; //去除移动端点击高亮效果
+  box-sizing: border-box;
 }
 
 a:any-link {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-ul,ol,li{
-    list-style: none;
+a {
+  cursor: unset;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
 }
 .clearfix {
-    zoom: 1;
+  zoom: 1;
 }
 
 .clearfix::before {
-    content: "";
+  content: "";
 }
 
 .clearfix::after {
-    content: "";
+  content: "";
 }
 
 ::selection {
-    background-color: #98c8ff3b;
+  background-color: #98c8ff3b;
 }
-blockquote, dl, ol, p, pre, table, ul {
-    /* margin: 20px 0; */
-    vertical-align: baseline;
+blockquote,
+dl,
+ol,
+p,
+pre,
+table,
+ul {
+  /* margin: 20px 0; */
+  vertical-align: baseline;
 }
 
-blockquote, dl, ol, p, pre, table {
-    margin: 20px 0;
+blockquote,
+dl,
+ol,
+p,
+pre,
+table {
+  margin: 20px 0;
 }
 // #app {
 //     height: 1800px;
 // }
+
+body{
+    line-height: 1.5;
+    background-image: url('../assets/bg.png');
+    background-position: left top;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-color: #f7f7f7!important;
+}
