@@ -7,7 +7,7 @@
     <div class="grid-sizer"></div>
     <div class="grid-item">
       <div class="image_info">
-        <h1><center>Luminous1011's plog</center></h1>
+        <h1><center>🍃</center></h1>
         <p>
           不是每个人都能成为摄影师，但好的摄影作品可以出自于任何人。
           <br />
@@ -22,337 +22,18 @@
         </p>
       </div>
     </div>
-    <div class="grid-item">
-      <div>
+    <div class="grid-item" v-for="item,index in data " :key="index" @click="handleTarget(item.targetUrl)">
+      <div> 
         <div>
           <img
             class="lazy"
             @load="load"
             src="https://rawchen.com/loading.gif"
-            data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg"
+            :data-original="item.imgUrl"
           />
         </div>
       </div>
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg"
-        />
-      </div>
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg"
-        />
-      </div>
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg"
-        />
-      </div>
-
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
-    </div>
-    <div class="grid-item">
-      <div>
-        <img
-          class="lazy"
-          @load="load"
-          src="https://rawchen.com/loading.gif"
-          data-original="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg"
-        />
-      </div>
-      <div class="image_info">2022.06.22 中国电信信息园区</div>
+      <div class="image_info">{{item.time}} {{item.event}}</div>
     </div>
   </div>
 </template>
@@ -363,6 +44,22 @@ import { onMounted } from "vue";
 
 useScreenResize();
 
+const data = [
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1038102939.jpg',time:'2022.10.01',event:'迪士尼王子回家记',targetUrl:'https://tuchong.com/27380778/117243795/'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1009136084.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/939930038.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1016738039.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/980562277.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/833761922.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1281045229.jpg',time:'2022.09.18',event:'一组清凉☁️'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1258303931.jpg',time:'2022.09.18',event:'一组清凉☁️'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1231630923.jpg',time:'2022.09.18',event:'一组清凉☁️'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1046688358.jpg',time:'2022.09.18',event:'一只叫Amy的流氓🐱🐱'},
+]
+
+function handleTarget(targetUrl:string){
+  window.open(targetUrl,'_blank')
+}
 onMounted(() => {
   //设置延迟加载图片
   setTimeout(
