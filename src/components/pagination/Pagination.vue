@@ -1,0 +1,52 @@
+<template>
+  <a-pagination
+    class="pagination"
+    v-model:current="current"
+    :total="100"
+    show-less-items
+    :showSizeChanger="false"
+  />
+  <!-- <template #itemRender="{ type, originalElement }">
+      <a v-if="type === 'prev'">&lt;</a>
+      <a v-else-if="type === 'next'">&gt;</a>
+      <component :is="originalElement" v-else></component>
+    </template>
+  </a-pagination> -->
+</template>
+
+<script setup lang="ts">
+import { ref } from "@vue/reactivity";
+const current = ref(2);
+</script>
+
+<style lang="less">
+.pagination {
+  text-align: center;
+  margin: 20px 0;
+  a {
+    font-family: "Josefin Sans", "PingFang SC", sans-serif;
+    // font-weight: 600;
+  }
+  a:hover {
+    color: currentColor;
+  }
+  .ant-pagination-item-link,
+  li {
+    border: none;
+    background: unset;
+  }
+  li.ant-pagination-item-active {
+    background-color: #ff808e;
+    border-radius: 8px;
+    a {
+      color: #fff;
+    }
+  }
+  .anticon.ant-pagination-item-link-icon {
+    color: #ff808e;
+  }
+//   .ant-pagination-prev,.ant-pagination-next{
+//     font-size: 16px;
+//   }
+}
+</style>

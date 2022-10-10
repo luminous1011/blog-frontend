@@ -29,12 +29,16 @@
         </li>
       </ul>
     </main>
+    <footer>
+      <Pagination />
+    </footer>
   </div>
 </template>
 
 <script lang="ts" setup>
 import Meta from "@/components/meta/Meta.vue";
 import Title from "@/components/title/Title.vue";
+import Pagination from '@/components/pagination/Pagination.vue'
 import img from '@/assets/2.jpg'
 
 

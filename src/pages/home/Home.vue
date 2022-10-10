@@ -2,7 +2,7 @@
   <div class="home">
     <div class="lists">
       <div>
-        <div class="lists_item">
+        <header class="lists_item">
           <div class="lists_item_container">
             <a :href="BLOG_HOME">
               <div class="thumb"></div>
@@ -22,8 +22,8 @@
               <router-link to="">WEB</router-link>
             </div>
           </div>
-        </div>
-        <div class="lists_item" v-for="item in 5" :key="item">
+        </header>
+        <main class="lists_item" v-for="item in 5" :key="item">
           <div class="lists_item_container">
             <a :href="BLOG_HOME">
               <div class="thumb green"></div>
@@ -44,7 +44,10 @@
               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...
             </p>
           </div>
-        </div>
+        </main>
+        <footer>
+          <Pagination />
+        </footer>
       </div>
     </div>
   </div>
@@ -54,7 +57,7 @@
 import Meta from "@/components/meta/Meta.vue";
 import Moment from "@/components/moment/Moment.vue";
 import { BLOG_HOME } from "@/utils/utils";
-
+import Pagination from "@/components/pagination/Pagination.vue";
 const meta = { date: "2022-07-20", tag: "Web笔记", comments: 8, view: 2232 };
 </script>
 
