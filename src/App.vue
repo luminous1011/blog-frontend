@@ -63,7 +63,7 @@ const footerVisible = computed(() => store.state.footerVisible);
 
 @media (max-width: 700px) {
   .container {
-    padding: 30px 25px 20px;
+    padding: 30px 20px 20px;
   }
 }
 
