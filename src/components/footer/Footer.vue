@@ -14,7 +14,9 @@
     <div class="footer-meta">
       <div class="footer-meta-content">
         <div class="meta-item meta-cp">
-          <div class="info-sign"></div>
+          <div class="info-sign">
+            <img src="https://rawchen.com/logo-footer.png" alt="" height="64px">
+          </div>
           <div class="info-txt">
             <p>© 2018-2022 Luminous1011 · Blog</p>
             <p>沪ICP备xxxxxxxx号 - x</p>
@@ -121,6 +123,20 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     color: #767676;
+  }
+  @media  (max-width:650px) {
+    .footer-social,.meta-item:not(:first-child){
+      display: none;
+    }
+    .meta-cp{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 15px;
+    }
+    .footer-meta-content{
+      height: 100px;
+    }
   }
 }
 </style>

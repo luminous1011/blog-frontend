@@ -6,40 +6,40 @@
       </header>
       <main>
         <div class="common-title">分类 : JAVA</div>
+        <div class="post-list">
+          <div class="post-list-item" v-for="item in 10" :key="item">
+            <div
+              :class="[
+                'post-list-content',
+                ThemeBg[Math.floor(Math.random() * ThemeBg.length)],
+              ]"
+            >
+              <div class="item-title">阿里云盘列表程序</div>
+              <div class="item-meta">
+                <div class="item-meta-date">2021-11-23</div>
+                <div
+                  :class="['item-meta-ico',`bg-ico-${ThemeIco[Math.floor(Math.random() * ThemeIco.length)]}`]"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
-      <footer></footer>
+      <footer>
+        <Pagination />
+      </footer>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import Field from "@/components/field/Field.vue";
+import Pagination from "@/components/pagination/Pagination.vue";
+import { ThemeBg, ThemeIco } from "@/utils/utils";
 
 const archives = { posts: 132, tags: 366, commits: 2288, views: 27988 };
 </script>
 
 <style lang="less">
-.article-content {
-  max-width: unset;
-  min-height: calc(100vh - 70px);
-  .content {
-    max-width: 940px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  .common-title {
-    font-size: 14px;
-    position: relative;
-    margin: 10px auto;
-    padding: 0 30px;
-    color: #5f5f5f;
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 15px;
-      content: "#";
-      color: #eb5055;
-    }
-  }
-}
+@import '../web/index.less';
 </style>

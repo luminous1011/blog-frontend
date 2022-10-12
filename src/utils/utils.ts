@@ -9,6 +9,10 @@ export const MAIL_CONTACT_URL: string = "http://mail.qq.com/cgi-bin/qm_share?t=q
 export const BLOG_HOME: string = "http://47.93.60.137:9010"
 export const BLOG_FAVICON: string = "http://47.93.60.137:9010/favicon.png"
 
+export const ThemeBg = ['bg-red','bg-yellow','bg-blue','bg-green','bg-purple','bg-orange']
+export const ThemeIco = ['book','lock','write','msg','website','pic','app','link','art','game']
+
+
 /**
  * 节流函数（一段时间内只触发一次）
  * @param func 
