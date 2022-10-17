@@ -2,12 +2,14 @@ const { defineConfig } = require("@vue/cli-service");
 const CompressionPlugin = require("compression-webpack-plugin");
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
+const isProd = process.env.NODE_ENV === 'production'
+const productionGzipExtensions = ['js', 'css']
+
 module.exports = defineConfig({
   runtimeCompiler: true,
   productionSourceMap: false,
   transpileDependencies: true,
   chainWebpack: (config) => {
-    console.error(config);
     config.plugin("html").tap((args) => {
       args[0].title = "Luminous1011 · Blog";
       return args;
@@ -20,18 +22,20 @@ module.exports = defineConfig({
     proxy: {},
   },
   configureWebpack: {
-    plugins:[new CompressionPlugin({
-        test: /\.(js|css|less)$/, // 匹配文件名
-        threshold: 10240, // 对超过10k的数据压缩
-        deleteOriginalAssets: false // 不删除源文件
-      })
+    plugins: [
+      new CompressionPlugin({
+        algorithm: 'gzip',
+          test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+          threshold: 10240,
+          minRatio: 0.8,
+      }),
       // new BundleAnalyzerPlugin()
     ],
     // externals:{
-    //   // 'vue':'Vue',
-    //   // 'ant-design-vue':'ant-design-vue',
-    //   // 'vue-router':'vue-router',
-    //   // 'vuex':'vuex'
+    // 'vue':'Vue',
+    // 'ant-design-vue':'ant-design-vue',
+    // 'vue-router':'vue-router',
+    // 'vuex':'vuex'
     // }
     // const conf = {};
     // conf.plugin('compressionPlugin').use(new CompressionPlugin({
@@ -39,7 +43,6 @@ module.exports = defineConfig({
     //   threshold: 10240, // 对超过10k的数据压缩
     //   deleteOriginalAssets: false // 不删除源文件
     // }))
-    
     // if (process.env.NODE_ENV === "production") {
     //   conf.externals = {
     //     axios: "axios",
@@ -51,5 +54,5 @@ module.exports = defineConfig({
     //   };
     // }
     // return conf;
-  }
+  },
 });

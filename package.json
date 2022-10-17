@@ -21,6 +21,7 @@
     "compression-webpack-plugin": "^10.0.0",
     "core-js": "^3.8.3",
     "highlight.js": "^11.6.0",
+    "image-webpack-loader": "^8.1.0",
     "jquery-bridget": "^3.0.1",
     "js-cookie": "^3.0.1",
     "masonry-layout": "^4.2.2",
