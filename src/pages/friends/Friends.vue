@@ -1,35 +1,38 @@
 <template>
-  <div class="container friends">
-    <header>
-      <Title>友链</Title>
-      <Meta class="item_meta" :meta="meta" />
-    </header>
-    <main>
-      <h2>申请友链样式：</h2>
-      <blockquote>
+  <div>
+    <div class="container friends">
+      <header>
+        <Title>友链</Title>
+        <Meta class="item_meta" :meta="meta" />
+      </header>
+      <main>
+        <h2>申请友链样式：</h2>
+        <blockquote>
+          <p>
+            Name：Luminous1011
+            <br />
+            Addr：<a :href="BLOG_HOME" target="_blank">{{ BLOG_HOME }}</a>
+            <br />
+            Logo：<a :href="BLOG_FAVICON" target="_blank">{{ BLOG_FAVICON }}</a>
+          </p>
+        </blockquote>
         <p>
-          Name：Luminous1011
+          欢迎来互换友链，也可以在这个页面下方留言都行。
           <br />
-          Addr：<a :href="BLOG_HOME" target="_blank">{{BLOG_HOME}}</a>
-          <br />
-          Logo：<a :href="BLOG_FAVICON" target="_blank">{{BLOG_FAVICON}}</a>
+          我会记着,感谢曾经给予我帮助的人。
         </p>
-      </blockquote>
-      <p>
-        欢迎来互换友链，也可以在这个页面下方留言都行。
-        <br/>
-        我会记着,感谢曾经给予我帮助的人。
-      </p>
-    </main>
-    <footer></footer>
+      </main>
+      <footer></footer>
+    </div>
+    <Comment />
   </div>
 </template>
 
 <script lang="ts" setup>
 import Meta from "@/components/meta/Meta.vue";
 import Title from "@/components/title/Title.vue";
-import { BLOG_HOME,BLOG_FAVICON } from "@/utils/utils";
-
+import Comment from "@/components/comment/Comment.vue";
+import { BLOG_HOME, BLOG_FAVICON } from "@/utils/utils";
 
 const meta = { date: "2022-07-20", comments: 18, view: 188 };
 </script>
