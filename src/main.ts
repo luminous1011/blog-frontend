@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import bootstrap from "@/bootstrap";
+import bootstrap from "./bootstrap";
 import { Pagination, Space, BackTop } from "ant-design-vue";
 
 import "animate.css/source/animate.css";

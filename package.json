@@ -1,12 +1,14 @@
 {
-  "name": "demo",
-  "version": "0.1.0",
+  "name": "vite-project",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "dev": "vue-cli-service serve",
-    "start": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "vite",
+    "serve": "vite",
+    "start": "vite",
+    "build": " vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@highlightjs/vue-plugin": "^2.1.0",
@@ -18,36 +20,24 @@
     "ant-design-vue": "^3.2.12",
     "aplayer": "^1.10.1",
     "axios": "^0.27.2",
-    "compression-webpack-plugin": "^10.0.0",
-    "core-js": "^3.8.3",
     "highlight.js": "^11.6.0",
-    "image-webpack-loader": "^8.1.0",
     "jquery-bridget": "^3.0.1",
     "js-cookie": "^3.0.1",
     "masonry-layout": "^4.2.2",
     "nprogress": "^0.2.0",
+    "path": "^0.12.7",
     "uuid": "^9.0.0",
-    "vue": "^3.2.13",
+    "vue": "^3.2.37",
     "vue-router": "^4.0.3",
-    "vuex": "^4.0.0",
-    "webpack-bundle-analyzer": "^4.6.1",
-    "yarn": "^1.22.19"
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@types/nprogress": "^0.2.0",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-router": "~5.0.0",
-    "@vue/cli-plugin-typescript": "~5.0.0",
-    "@vue/cli-plugin-vuex": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
+    "@vitejs/plugin-vue": "^3.1.0",
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
-    "typescript": "~4.5.5"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0",
+    "vue-tsc": "^0.40.4"
+  }
 }

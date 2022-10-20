@@ -45,6 +45,7 @@ import { onMounted } from "vue";
 useScreenResize();
 
 const data = [
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1285305025.jpg',time:'2022.09.18',event:'the model 3 performance ',targetUrl:'https://tuchong.com/27380778/117796336/'},
   {imgUrl:'https://photo.tuchong.com/27380778/f/1038102939.jpg',time:'2022.10.01',event:'迪士尼王子回家记',targetUrl:'https://tuchong.com/27380778/117243795/'},
   {imgUrl:'https://photo.tuchong.com/27380778/f/1009136084.jpg',time:'2022.10.01',event:'迪士尼王子回家记',targetUrl:'https://tuchong.com/27380778/117243795/#image1009136084'},
   {imgUrl:'https://photo.tuchong.com/27380778/f/939930038.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},

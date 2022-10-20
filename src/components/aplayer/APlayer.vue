@@ -1,15 +1,16 @@
 <template>
-  <div ref="playerRef" class="playerRef"></div>
+  <div ref="playerRef" class="playerRef" ></div>
 </template>
 
 <script lang="ts" setup>
-import type { APlayer as IAPlayer } from "@moefe/vue-aplayer";
+import APlayer from 'aplayer/dist/APlayer.min.js';
+import 'aplayer/dist/APlayer.min.css'
 import type { PropType } from "@vue/runtime-core";
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import { getMusic } from "@/service/music";
-
+import { AxiosResponse } from 'axios';
 const playerRef = ref();
-let instance: IAPlayer;
+let instance:Object;
 
 // APlayer歌曲信息
 class Audio {
@@ -133,7 +134,7 @@ onMounted(() => {
     server: props.songServer,
     type: props.songType,
     id: props.songId,
-  }).then((res) => {
+  }).then((res:AxiosResponse) => {
     let arr = [res.data[0]];
     if (props.songType === "playlist") arr = res.data;
     let audioList = arr.map(
