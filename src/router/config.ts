@@ -48,10 +48,14 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
- 
+  {
+    path: "/404",
+    name: "404",
+    component: () => import("@/pages/home/Home.vue"),//首页暂代404
+  },
   // {
-  //     path: "/*",
-  //     redirect:"/"
+  //     path: "*",
+  //     redirect:"/404"
   // },
 ];
 
