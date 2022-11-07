@@ -58,7 +58,7 @@ import Meta from "@/components/meta/Meta.vue";
 import Moment from "@/components/moment/Moment.vue";
 import { BLOG_HOME } from "@/utils/utils";
 import Pagination from "@/components/pagination/Pagination.vue";
-
+import { MarkdownPro } from 'vue-meditor'
 const meta = { date: "2022-07-20", tag: "Web笔记", comments: 8, view: 2232 };
 </script>
 

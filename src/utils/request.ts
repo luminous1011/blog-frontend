@@ -6,7 +6,7 @@ import Cookie from "js-cookie";
 import { IMethod, IRESULT_CODE } from "@/interface/utils/request";
 
 axios.defaults.timeout = 5000;
-
+axios.defaults.baseURL = '/api'
 // http method
 const METHOD: IMethod = {
   GET: "get",
@@ -35,7 +35,7 @@ const RESULT_CODE: IRESULT_CODE = {
 async function request(
   url: string,
   method: Method,
-  params: any,
+  params?: any,
   config: AxiosRequestConfig = {}
 ) {
   switch (method) {
@@ -48,4 +48,40 @@ async function request(
   }
 }
 
-export { METHOD, RESULT_CODE, request };
+/**
+ * 加载 axios 拦截器
+ * @param interceptors
+ * @param options
+ */
+ function loadInterceptors(interceptors, options) {
+  const { request, response } = interceptors
+  // 加载请求拦截器
+  request.forEach((item) => {
+    let { onFulfilled, onRejected } = item
+    if (!onFulfilled || typeof onFulfilled !== 'function') {
+      onFulfilled = (config) => config
+    }
+    if (!onRejected || typeof onRejected !== 'function') {
+      onRejected = (error) => Promise.reject(error)
+    }
+    axios.interceptors.request.use(
+      (config) => onFulfilled(config, options),
+      (error) => onRejected(error, options)
+    )
+  })
+  // 加载响应拦截器
+  response.forEach((item) => {
+    let { onFulfilled, onRejected } = item
+    if (!onFulfilled || typeof onFulfilled !== 'function') {
+      onFulfilled = (response) => response
+    }
+    if (!onRejected || typeof onRejected !== 'function') {
+      onRejected = (error) => Promise.reject(error)
+    }
+    axios.interceptors.response.use(
+      (response) => onFulfilled(response, options),
+      (error) => onRejected(error, options)
+    )
+  })
+}
+export { METHOD, RESULT_CODE, request,loadInterceptors };

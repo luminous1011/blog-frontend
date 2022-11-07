@@ -17,9 +17,15 @@
 import AdminHeader from "@/components/header/Header.vue";
 import AdminFooter from "@/components/footer/Footer.vue";
 import TabsView from "@/components/tabs/TabsView.vue";
+import { getConnect } from "./service/test";
+
+const res = getConnect()
+console.error(res);
+
 
 import { computed } from "vue";
 import { useStore } from "vuex";
+
 
 const store = useStore();
 const headerTheme = computed(() => store.state.theme);

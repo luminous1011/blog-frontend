@@ -8,3 +8,4 @@ declare module '*.vue' {
 declare module 'jquery-bridget'
 declare module 'uuid'
 declare module 'aplayer/dist/APlayer.min.js'
+declare module 'vue-meditor'
