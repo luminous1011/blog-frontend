@@ -27,6 +27,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 
+
 const store = useStore();
 const headerTheme = computed(() => store.state.theme);
 const bgTheme = computed(() => store.state.bgColor);
