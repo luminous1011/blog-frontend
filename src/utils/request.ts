@@ -1,10 +1,13 @@
 import axios, {
   AxiosRequestConfig,
   Method,
+  AxiosError,
+  AxiosResponse
 } from "axios";
 import Cookie from "js-cookie";
 import { IMethod, IRESULT_CODE } from "@/interface/utils/request";
-
+import {IBootstrapProps } from '@/interface/bootstrap'
+import {IAxiosInterceptors} from '@/interface/utils/axios-interceptors'
 axios.defaults.timeout = 5000;
 axios.defaults.baseURL = '/api'
 // http method
@@ -53,16 +56,17 @@ async function request(
  * @param interceptors
  * @param options
  */
- function loadInterceptors(interceptors, options) {
+ function loadInterceptors(interceptors:IAxiosInterceptors, options:IBootstrapProps) {
+  
   const { request, response } = interceptors
   // 加载请求拦截器
   request.forEach((item) => {
     let { onFulfilled, onRejected } = item
     if (!onFulfilled || typeof onFulfilled !== 'function') {
-      onFulfilled = (config) => config
+      onFulfilled = (config:AxiosRequestConfig) => config
     }
     if (!onRejected || typeof onRejected !== 'function') {
-      onRejected = (error) => Promise.reject(error)
+      onRejected = (error:AxiosError) => Promise.reject(error)
     }
     axios.interceptors.request.use(
       (config) => onFulfilled(config, options),
@@ -73,10 +77,10 @@ async function request(
   response.forEach((item) => {
     let { onFulfilled, onRejected } = item
     if (!onFulfilled || typeof onFulfilled !== 'function') {
-      onFulfilled = (response) => response
+      onFulfilled = (response:AxiosResponse) => response
     }
     if (!onRejected || typeof onRejected !== 'function') {
-      onRejected = (error) => Promise.reject(error)
+      onRejected = (error:AxiosError) => Promise.reject(error)
     }
     axios.interceptors.response.use(
       (response) => onFulfilled(response, options),

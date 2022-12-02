@@ -19,8 +19,6 @@ export default createStore({
     },
     setFooterVisible(state,footerVisible ) {
       state.footerVisible = footerVisible;
-      console.error(footerVisible);
-      
     },
   },
   actions: {},
