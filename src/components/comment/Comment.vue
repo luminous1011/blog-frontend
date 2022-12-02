@@ -97,7 +97,6 @@ const email = ref("");
 const bolgUrl = ref("");
 
 function handleClick() {
-  console.error(1);
   console.error(name.value, email.value, comment.value);
 }
 </script>

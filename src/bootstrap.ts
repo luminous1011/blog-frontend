@@ -1,5 +1,5 @@
 import {loadGuards} from '@/utils/routerUtil'
-import { IBootstrapProps } from './interface/bootstrap';
+import { IBootstrapProps } from '@/interface/bootstrap';
 // import { loadRoutes, loadGuards, setAppOptions } from '@/utils/routerUtil'
 import { loadInterceptors } from "@/utils/request";
 import guards from '@/router/guards'
