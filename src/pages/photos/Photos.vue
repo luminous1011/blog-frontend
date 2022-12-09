@@ -45,6 +45,12 @@ import { onMounted } from "vue";
 useScreenResize();
 
 const data = [
+  {imgUrl:'https://photo.tuchong.com/27380778/f/955331452.jpg',time:'2022.11.12',event:'闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/797651877.jpg',time:'2022.11.12',event:'闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/#image797651877'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/881275687.jpg',time:'2022.11.12',event:'闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/#image881275687'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1176581093.jpg',time:'2022.11.12',event:'闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/#image1176581093'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1037906958.jpg',time:'2022.11.12',event:'闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/#image1037906958'},
+  {imgUrl:'https://photo.tuchong.com/27380778/f/1149514728.jpg',time:'2022.11.12',event:'闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/#image1149514728'},
   {imgUrl:'https://photo.tuchong.com/27380778/f/1082995398.jpg',time:'2022.10.28',event:'眉山',targetUrl:'https://tuchong.com/27380778/118190918/'},
   {imgUrl:'https://photo.tuchong.com/27380778/f/915092270.jpg',time:'2022.10.22',event:'一叶知秋',targetUrl:'https://tuchong.com/27380778/117868689/'},
   {imgUrl:'https://photo.tuchong.com/27380778/f/1285305025.jpg',time:'2022.10.18',event:'the model 3 performance ',targetUrl:'https://tuchong.com/27380778/117796336/'},
