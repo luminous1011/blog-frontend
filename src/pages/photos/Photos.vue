@@ -62,7 +62,6 @@ const data = [
   {imgUrl:'https://photo.tuchong.com/27380778/f/833761922.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},
   {imgUrl:'https://photo.tuchong.com/27380778/f/1281045229.jpg',time:'2022.09.18',event:'一组清凉☁️'},
   {imgUrl:'https://photo.tuchong.com/27380778/f/1258303931.jpg',time:'2022.09.18',event:'一组清凉☁️'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1231630923.jpg',time:'2022.09.18',event:'一组清凉☁️'},
   {imgUrl:'https://photo.tuchong.com/27380778/f/1046688358.jpg',time:'2022.09.18',event:'一只叫Amy的流氓🐱🐱'},
 ]
 
