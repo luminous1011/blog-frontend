@@ -46,17 +46,22 @@ const routes: Array<RouteRecordRaw> = [
         name: "friends",
         component: () => import("@/pages/friends/Friends.vue"),
       },
+      {
+        path: "/post",
+        name: "post",
+        component: () => import("@/pages/post/Post.vue"),
+      },
     ],
   },
   {
     path: "/404",
     name: "404",
-    component: () => import("@/pages/home/Home.vue"),//首页暂代404
+    component: () => import("@/pages/error/404.vue"),//首页暂代404
   },
-  // {
-  //     path: "*",
-  //     redirect:"/404"
-  // },
+  {
+      path: "/:error*",
+      redirect:"/404"
+  },
 ];
 
 export default routes;
