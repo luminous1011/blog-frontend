@@ -22,7 +22,7 @@
         </div>
       </div>
     </header>
-    <main class="index_page index-page">
+    <main class="index_page index-page post-wrapper-main">
       <h1>StartAllBack</h1>
       <p>
         推荐使用美化软件StartAllBack，网址1：
@@ -162,6 +162,7 @@ p {
 }
 main.index-page {
   padding: 30px 25px 20px;
+  box-shadow: 0 0 55px 0 rgb(0 0 0 / 3%);
 }
 .post-wrapper {
   max-width: unset;
