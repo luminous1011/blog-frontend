@@ -8,9 +8,10 @@ import { Pagination, Space, BackTop } from "ant-design-vue";
 import "animate.css/source/animate.css";
 
 // 引入highlight.js
-import "highlight.js/styles/atom-one-dark.css";
-import "highlight.js/lib/common";
 import hljs from "@highlightjs/vue-plugin";
+import "highlight.js/lib/common";
+import "highlight.js/styles/a11y-dark.css";
+
 
 
 // 引入 aplayer
@@ -26,5 +27,12 @@ app.use(hljs);
 app.use(Pagination);
 app.use(Space);
 app.use(BackTop);
+
+
+app.config.globalProperties.$filters ={
+    currencyUSD(value:any){
+        return `$${value}`
+    }
+}
 
 app.mount("#app");
