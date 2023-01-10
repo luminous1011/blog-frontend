@@ -34,7 +34,8 @@
           </a>
           <a target="_blank">
             <div class="wechat">
-              <span class="content">luminous_chat</span>
+              <!-- <span class="content">luminous_chat</span> -->
+              <span class="content">********</span>
               <i class="fa fa-wechat"></i>
             </div>
           </a>
