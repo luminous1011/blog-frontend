@@ -5,6 +5,13 @@ import WIN11_03 from '@/assets/win11-03.png'
 
 import VUE3_FILTERS_00 from '@/assets/vue3-filters-00.png'
 
+import SCRIPT_00 from '@/assets/script-00.png'
+import SCRIPT_01 from '@/assets/script-01.png'
+import SCRIPT_02 from '@/assets/script-02.jpg'
+import SCRIPT_03 from '@/assets/script-03.jpg'
+import SCRIPT_04 from '@/assets/script-04.jpg'
+import SCRIPT_05 from '@/assets/script-05.jpg'
+
 interface IMessage{
     type:string,
     paragraph:string
@@ -196,6 +203,49 @@ mounted() {
                 <p>如果全局挂载了<code class="code-inner">currencyUSD</code>方法，组件自身也有<code class="code-inner">currencyUSD</code>方法，那么组件的方法会覆盖全局的方法，以组件内自己的方法优先。</p>`
             },
         ]
+    },
+    {
+        articleId:3,
+        cover:SCRIPT_00,
+        title: '图解 script 标签中 defer 和 async ',
+        intro:'图解浏览器解析HTML的时候，如果遇到一个没有任何属性的script标签，与script 标签中带有的 async 和 defer 属性时的区别......',
+        message:[
+            {
+                type:'html',
+                paragraph:`
+                    <h1>HTML</h1>
+                    <p><code class="code-inner">script</code>：会阻碍 HTML 的解析，只有下载好并执行完脚本才会继续解析HTML。<br/>
+                    <code class="code-inner">async script</code>：解析HTML过程中进行脚本的异步下载，下载成功立马执行，有可能会阻断HTML的解析。<br/>
+                    <code class="code-inner">defer script</code>：完全不会阻碍HTML的解析，解析完成之后再按照顺序执行脚本。</p>
+                    <p>下面清晰的展示了三种 script 的过程：</p>
+                    <img src="${SCRIPT_01}"/>
+                    <h1>&lt;script&gt;</h1>
+                    <p>
+                    浏览器解析HTML的时候，如果遇到一个<code class="code-inner">没有任何属性</code>的script标签，就会暂停解析，先发送网络请求获取改js脚本的代码内容，然后让js引擎执行该代码，当代码执行完毕后恢复解析，整个过程如图下所示：
+                    </p>
+                    <img src="${SCRIPT_02}"/>
+                    <p>可以看到，script阻塞了浏览器对于HTML的解析，如果获取js脚本的网络请求迟迟得不到响应，或者js脚本执行时间过长，都会导致白屏，用户看不到页面内容。</p>
+                    <h1>&lt;script async&gt;</h1>
+                    <p>当浏览器遇到带有 <code class="code-inner">async</code> 属性的 script 时，请求该脚本的网络请求是异步的，不会阻塞浏览器解析 HTML，一旦网络请求回来之后，如果此时 HTML 还没有解析完，浏览器会暂停解析，先让 JS 引擎执行代码，执行完毕后再进行解析，图示如下：</p>
+                    <img src="${SCRIPT_03}"/>
+                    <p>当然，如果在 JS 脚本请求回来之前，HTML 已经解析完毕了，那就啥事没有，立即执行 JS 代码，如下图所示：</p>
+                    <img src="${SCRIPT_04}"/>
+                    <p>所以 async 是<code class="code-inner">不可控的</code>，因为执行时间不确定，你如果在异步 JS 脚本中获取某个 DOM 元素，有可能获取到也有可能获取不到。而且如果存在多个 async 的时候，它们之间的执行顺序也不确定，完全依赖于网络传输结果，谁先到执行谁。</p>
+                    
+                    <h1>&lt;script defer&gt;</h1>
+                    <p>当浏览器遇到带有<code class="code-inner"> defer</code> 属性的 script 时，获取该脚本的网络请求也是异步的，不会阻塞浏览器解析 HTML，一旦网络请求回来之后，如果此时 HTML 还没有解析完，浏览器不会暂停解析并执行 JS 代码，而是等待 HTML 解析完毕再执行 JS 代码，图示如下：</p>
+                    <img src="${SCRIPT_05}"/>
+                    <p>如果存在多个 defer script 标签，浏览器（IE除外）会保证它们按照在 HTML 中出现的<code class="code-inner">顺序执行</code> ，不会破坏 JS 脚本之间的依赖关系。</p>
+
+                    <h1>总结</h1>
+                    <blockquote>
+                        <p><code class="code-inner">&lt;script&gt;</code>：按照	<code class="code-inner">在 HTML 中的顺序</code> 执行，<code class="code-inner">阻塞</code><br/>
+                        <code class="code-inner">&lt;async script&gt;</code>：按照	<code class="code-inner">网络请求返回顺序</code> 执行，<code class="code-inner">可能阻塞，也可能不阻塞</code><br/>
+                        <code class="code-inner">&lt;defer script&gt;</code>：按照	<code class="code-inner">在 HTML 中的顺序</code> 执行，<code class="code-inner">不阻塞</code></p>
+                    </blockquote>
+                    `
+            }
+        ]   
     }
 ]
 

@@ -105,8 +105,30 @@ const meta = { date: "2022-07-20", comments: 8, view: 122 };
     width: 100%;
     height: auto;
     margin: 0 auto 10px;
-    box-shadow: 0 0px 3px rgba(31, 35, 37, 0.25);
-    -webkit-box-shadow: 0 0px 10px rgba(31, 35, 37, 0.25);
+    box-shadow: 0 0px 3px rgba(31, 35, 37, 0.05);
+    -webkit-box-shadow: 0 0px 10px rgba(31, 35, 37, 0.05);
+  }
+  blockquote {
+    padding: 8px 20px;
+    background: linear-gradient(to right, #dceaff, #ededed);
+    border-left: 4px solid #70a6ff;
+    border-radius: 0 5px 5px 0;
+    margin-bottom: 10px;
+    &::before {
+      background: #70a6ff;
+      border-radius: 50%;
+      color: #fff;
+      content: "\0021";
+      font-family: Dosis, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      height: 21px;
+      line-height: 21px;
+      margin-left: -33px;
+      margin-top: 5px;
+      position: absolute;
+      text-align: center;
+      width: 21px;
+    }
   }
 }
 
