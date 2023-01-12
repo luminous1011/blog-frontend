@@ -5,6 +5,9 @@ import path from 'path'
 // const isProd = process.env.NODE_ENV === 'production'
 const productionGzipExtensions = ['js', 'css']
 
+// 代码打包之后取出console.log压缩代码
+// const TerserPlugin = require('terser-webpack-plugin')
+
 // https://vitejs.dev/config/
 export default defineConfig({
   server:{
@@ -23,5 +26,7 @@ export default defineConfig({
     },
     
   },
-  plugins: [vue()]
+  plugins: [
+    vue(),
+  ]
 })
