@@ -81,7 +81,7 @@ const meta = { date: "2022-07-20", comments: 8, view: 122 };
     border-bottom: 1px dotted #ccc;
     position: relative;
   }
-  .code-inner {
+  code{
     font-family: Menlo, Bitstream Vera Sans Mono, DejaVu Sans Mono, Monaco,
       Consolas, monospace;
     font-family: Consolas, "Microsoft YaHei", Monaco, Andale Mono, Ubuntu Mono,

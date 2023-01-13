@@ -237,11 +237,11 @@ mounted() {
                     <img src="${SCRIPT_05}"/>
                     <p>如果存在多个 defer script 标签，浏览器（IE除外）会保证它们按照在 HTML 中出现的<code class="code-inner">顺序执行</code> ，不会破坏 JS 脚本之间的依赖关系。</p>
 
-                    <h1>总结</h1>
+                    <h1 id="last">总结</h1>
                     <blockquote>
                         <p><code class="code-inner">&lt;script&gt;</code>：按照	<code class="code-inner">在 HTML 中的顺序</code> 执行，<code class="code-inner">阻塞</code><br/>
                         <code class="code-inner">&lt;async script&gt;</code>：按照	<code class="code-inner">网络请求返回顺序</code> 执行，<code class="code-inner">可能阻塞，也可能不阻塞</code><br/>
-                        <code class="code-inner">&lt;defer script&gt;</code>：按照	<code class="code-inner">在 HTML 中的顺序</code> 执行，<code class="code-inner">不阻塞</code></p>
+                        <code>&lt;defer script&gt;</code>：按照	<code class="code-inner">在 HTML 中的顺序</code> 执行，<code class="code-inner">不阻塞</code></p>
                     </blockquote>
                     `
             }
