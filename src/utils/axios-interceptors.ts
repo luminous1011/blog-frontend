@@ -33,7 +33,7 @@ export function getResResult(res:AxiosResponse ) {
       error = {}
     }
     const { code = errorCode, message = errMessage } = error
-    return Object.assign({}, res, { data: { ...res.data, error: { code, message } } })
+    return Object.assign({}, res, { data: {...res.data, error: { code, message } } })
   }
   return { data: { error: { errorCode, errMessage } } }
 }

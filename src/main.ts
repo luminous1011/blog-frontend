@@ -12,7 +12,7 @@ import hljs from "@highlightjs/vue-plugin";
 import "highlight.js/lib/common";
 import "highlight.js/styles/a11y-dark.css";
 
-
+import { timestampToTime } from "@/utils/time";
 
 // 引入 aplayer
 // https://github.com/DIYgod/APlayer
@@ -30,8 +30,8 @@ app.use(BackTop);
 
 
 app.config.globalProperties.$filters ={
-    currencyUSD(value:any){
-        return `$${value}`
+    timestampToTime(value:number){
+        return timestampToTime(value)
     }
 }
 

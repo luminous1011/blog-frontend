@@ -1,6 +1,5 @@
-const MUSIC_BASE_URL = 'https://api.i-meto.com/meting/api'
-const HELLO_SPRING_BOOT = '/hello'
+const MUSIC_BASE_URL = "https://api.i-meto.com/meting/api";
+const ESSAY_LIST = "/inwe/essay/getEssayList";
+const ESSAY_INSERT = "/inwe/essay/insertEssay";
 
-export {
-    MUSIC_BASE_URL,HELLO_SPRING_BOOT
-}
+export { MUSIC_BASE_URL, ESSAY_LIST, ESSAY_INSERT };

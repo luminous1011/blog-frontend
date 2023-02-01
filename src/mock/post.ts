@@ -241,7 +241,7 @@ mounted() {
                     <blockquote>
                         <p><code class="code-inner">&lt;script&gt;</code>：按照	<code class="code-inner">在 HTML 中的顺序</code> 执行，<code class="code-inner">阻塞</code><br/>
                         <code class="code-inner">&lt;async script&gt;</code>：按照	<code class="code-inner">网络请求返回顺序</code> 执行，<code class="code-inner">可能阻塞，也可能不阻塞</code><br/>
-                        <code>&lt;defer script&gt;</code>：按照	<code class="code-inner">在 HTML 中的顺序</code> 执行，<code class="code-inner">不阻塞</code></p>
+                        <code class="code-inner">&lt;defer script&gt;</code>：按照	<code class="code-inner">在 HTML 中的顺序</code> 执行，<code class="code-inner">不阻塞</code></p>
                     </blockquote>
                     `
             }
