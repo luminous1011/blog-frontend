@@ -2,14 +2,16 @@ import axios, {
   AxiosRequestConfig,
   Method,
   AxiosError,
-  AxiosResponse
+  AxiosResponse,
 } from "axios";
 import Cookie from "js-cookie";
 import { IMethod, IRESULT_CODE } from "@/interface/utils/request";
-import {IBootstrapProps } from '@/interface/bootstrap'
-import {IAxiosInterceptors} from '@/interface/utils/axios-interceptors'
+import { IBootstrapProps } from "@/interface/bootstrap";
+import { IAxiosInterceptors } from "@/interface/utils/axios-interceptors";
 axios.defaults.timeout = 5000;
-axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = import.meta.env.MODE === "development" ? "/api" : "";
+console.error(import.meta.env.MODE);
+
 // http method
 const METHOD: IMethod = {
   GET: "get",
@@ -56,36 +58,38 @@ async function request(
  * @param interceptors
  * @param options
  */
- function loadInterceptors(interceptors:IAxiosInterceptors, options:IBootstrapProps) {
-  
-  const { request, response } = interceptors
+function loadInterceptors(
+  interceptors: IAxiosInterceptors,
+  options: IBootstrapProps
+) {
+  const { request, response } = interceptors;
   // 加载请求拦截器
   request.forEach((item) => {
-    let { onFulfilled, onRejected } = item
-    if (!onFulfilled || typeof onFulfilled !== 'function') {
-      onFulfilled = (config:AxiosRequestConfig) => config
+    let { onFulfilled, onRejected } = item;
+    if (!onFulfilled || typeof onFulfilled !== "function") {
+      onFulfilled = (config: AxiosRequestConfig) => config;
     }
-    if (!onRejected || typeof onRejected !== 'function') {
-      onRejected = (error:AxiosError) => Promise.reject(error)
+    if (!onRejected || typeof onRejected !== "function") {
+      onRejected = (error: AxiosError) => Promise.reject(error);
     }
     axios.interceptors.request.use(
       (config) => onFulfilled(config, options),
       (error) => onRejected(error, options)
-    )
-  })
+    );
+  });
   // 加载响应拦截器
   response.forEach((item) => {
-    let { onFulfilled, onRejected } = item
-    if (!onFulfilled || typeof onFulfilled !== 'function') {
-      onFulfilled = (response:AxiosResponse) => response
+    let { onFulfilled, onRejected } = item;
+    if (!onFulfilled || typeof onFulfilled !== "function") {
+      onFulfilled = (response: AxiosResponse) => response;
     }
-    if (!onRejected || typeof onRejected !== 'function') {
-      onRejected = (error:AxiosError) => Promise.reject(error)
+    if (!onRejected || typeof onRejected !== "function") {
+      onRejected = (error: AxiosError) => Promise.reject(error);
     }
     axios.interceptors.response.use(
       (response) => onFulfilled(response, options),
       (error) => onRejected(error, options)
-    )
-  })
+    );
+  });
 }
-export { METHOD, RESULT_CODE, request,loadInterceptors };
+export { METHOD, RESULT_CODE, request, loadInterceptors };

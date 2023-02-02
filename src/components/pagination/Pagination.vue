@@ -6,12 +6,6 @@
     show-less-items
     :showSizeChanger="false"
   />
-  <!-- <template #itemRender="{ type, originalElement }">
-      <a v-if="type === 'prev'">&lt;</a>
-      <a v-else-if="type === 'next'">&gt;</a>
-      <component :is="originalElement" v-else></component>
-    </template>
-  </a-pagination> -->
 </template>
 
 <script setup lang="ts">
