@@ -5,7 +5,7 @@
   >
     <div >
       <a-space>
-        <up-square-filled
+        <UpSquareFilled
           style="font-size: 40px; color: rgba(232, 98, 86, 0.8)"
         />
       </a-space>

@@ -47,7 +47,7 @@
       </footer>
     </div>
     <Comment />
-    <Pagination />
+    <!-- <Pagination /> -->
   </div>
 </template>
 

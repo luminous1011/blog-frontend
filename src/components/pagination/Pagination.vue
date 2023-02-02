@@ -1,8 +1,8 @@
 <template>
   <a-pagination
     class="pagination"
-    v-model:current="current"
-    :total="100"
+    v-model:current="pagination.page"
+    :total="pagination.total"
     show-less-items
     :showSizeChanger="false"
   />
@@ -15,8 +15,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "@vue/reactivity";
-const current = ref(2);
+import { defineProps, toRefs } from "vue";
+
+interface IPagination {
+  page: number;
+  pageSize: number;
+  total: number;
+}
+
+const props = defineProps<{
+  pagination: IPagination;
+}>();
+const { pagination } = toRefs(props);
 </script>
 
 <style lang="less">
@@ -45,8 +55,17 @@ const current = ref(2);
   .anticon.ant-pagination-item-link-icon {
     color: #ff808e;
   }
-//   .ant-pagination-prev,.ant-pagination-next{
-//     font-size: 16px;
-//   }
+  li[aria-disabled="true"] {
+    display: none;
+  }
+  li {
+    a {
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+  //   .ant-pagination-prev,.ant-pagination-next{
+  //     font-size: 16px;
+  //   }
 }
 </style>

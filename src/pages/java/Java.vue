@@ -26,7 +26,7 @@
         </div>
       </main>
       <footer>
-        <Pagination />
+        <!-- <Pagination /> -->
       </footer>
     </div>
   </div>
