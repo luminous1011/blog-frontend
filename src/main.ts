@@ -30,6 +30,7 @@ app.use(BackTop);
 
 
 app.config.globalProperties.$filters ={
+    // yyyy-MM-dd hh:mm:ss
     timestampToTime(value:number){
         return timestampToTime(value)
     }
