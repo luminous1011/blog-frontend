@@ -50,7 +50,8 @@ const { pagination } = toRefs(props);
     color: #ff808e;
   }
   li[aria-disabled="true"] {
-    display: none;
+    // display: none;
+    visibility: hidden;
   }
   li {
     a {
