@@ -3,38 +3,54 @@
     <div class="comments clearfix">
       <div class="response-content zdypl">
         <span class="response">发表评论</span>
-        <form id="comment-form" class="comment-form">
-          <div class="clearfix">
-            <input
-              v-model="name"
-              class="input-control form-control"
-              placeholder="昵称(必填哦)"
-              maxlength="12"
-              required
-            />
-            <input
-              v-model="email"
-              class="input-control form-control"
-              placeholder="邮箱(必填哦)"
-              maxlength="100"
-              required
-            />
-            <input
-              v-model="bolgUrl"
-              class="input-control form-control"
-              placeholder="博客地址(https://)"
-              maxlength="100"
-            />
+        <a-form   ref="commentForm" :model="form" id="comment-form" class="comment-form">
+          <div class="clearfix main-info">
+            <a-form-item name="name">
+              <a-input
+                v-model:value="form.name"
+                autocomplete="off"
+                class="input-control form-control"
+                placeholder="昵称(必填哦)"
+                :maxlength="20"
+                required
+              />
+            </a-form-item>
+            <a-form-item name="email">
+              <a-input
+                v-model:value="form.email"
+                autocomplete="off"
+                class="input-control form-control"
+                placeholder="邮箱(必填哦)"
+                :maxlength="100"
+                required
+              />
+            </a-form-item>
+
+            <a-form-item name="blogUrl">
+              <a-input
+                v-model:value="form.blogUrl"
+                autocomplete="off"
+                class="input-control form-control"
+                placeholder="博客地址(https://)"
+                :maxlength="100"
+              />
+            </a-form-item>
           </div>
-          <textarea
-            v-model="comment"
-            class="form-control"
-            id="textarea"
-            placeholder="请填写真实邮箱哦方便能第一时间收到回复。 中国人不骗中国人，所以不要一个中文都没有噢 ≧◉◡◉≦（屏蔽国外恶意广告）"
-            required
-          ></textarea>
+
+          <a-form-item name="comment">
+            <a-textarea 
+              type="textarea"
+              autocomplete="off"
+              v-model:value="form.comment"
+              class="form-control"
+              id="textarea"
+              placeholder="请填写真实邮箱哦方便能第一时间收到回复。 中国人不骗中国人，所以不要一个中文都没有噢 ≧◉◡◉≦（屏蔽国外恶意广告）"
+              required
+            ></a-textarea>
+          </a-form-item>
+
           <button class="submit" @click="handleClick">提交</button>
-        </form>
+        </a-form>
       </div>
       <div class="comment-list">
         <ul>
@@ -64,7 +80,7 @@
               <!-- 时间 -->
 
               <span>
-                <!-- <i class="fa fa-windows" /> -->
+                <i class="fa fa-windows" />
                 <i class="fa fa-apple" />
                 Windows 10
               </span>
@@ -72,10 +88,11 @@
               <!-- 设备型号 eg：windows 10 / macos -->
 
               <span>
-                <!-- <i class="fa fa-chrome" /> -->
-                <!-- <i class="fa fa-safari" /> -->
-                <!-- <i class="fa fa-firefox" /> -->
+                <i class="fa fa-chrome" />
+                <i class="fa fa-safari" />
+                <i class="fa fa-firefox" />
                 <i class="fa fa-edge" />
+                <i class="fa fa-opera" />
                 Chrome 105
               </span>
               <!-- 浏览器版本 -->
@@ -84,20 +101,42 @@
         </ul>
       </div>
     </div>
-
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "@vue/reactivity";
+import { reactive, } from "vue";
+import {addComment} from "@/service/comment"
+import { browserRedirect,getExploreName ,getExploreVersion} from "@/utils/utils";
 
-const name = ref("");
-const comment = ref("");
-const email = ref("");
-const bolgUrl = ref("");
-
+interface IForm{
+  name:string,
+  comment:string,
+  email:string,
+  blogUrl:string
+}
+const form=reactive<IForm>({
+  name:'1111name',
+  comment:'comment2222',
+  email:'email111',
+  blogUrl:'blogUrl',
+})
 function handleClick() {
-  console.error(name.value, email.value, comment.value);
+  const operatingSystem= browserRedirect();
+  const browserIcon=getExploreName().toLowerCase()
+  const browser =`${getExploreName()} ${getExploreVersion()}` 
+  const params={
+    commentName:form.name,
+    commentEmail:form.email,
+    blogUrl:form.blogUrl,
+    comments:form.comment,
+    path:location.pathname,
+    operatingSystem,
+    browser,
+    browserIcon
+  }
+  console.error(params);
+  addComment(params)
 }
 </script>
 
@@ -146,28 +185,57 @@ function handleClick() {
     width: 100%;
     max-width: 294.8px;
     border-bottom: 1px dashed #ddd;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-left: 0;
     border-radius: 0;
     &::placeholder {
       font-size: 12px;
       color: #777;
     }
-    &:focus {
+    &:focus,
+    &:active {
       border-color: #eb5055;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      box-shadow: none;
     }
+  }
+  .main-info {
+    display: flex;
+  }
+  .ant-form-item {
+    width: 100% !important;
+    margin-bottom: 0 !important;
   }
   @media (max-width: 700px) {
+    .main-info {
+      display: block;
+    }
     .input-control {
       max-width: 100% !important;
+      width: unset;
     }
   }
-  textarea {
+  #textarea {
     overflow: hidden;
     height: 150px !important;
     padding: 10px 0;
+     border: none;
     resize: none;
     border-radius: 0;
     background: #fff url("../../assets/comments-bg.jpg") right center no-repeat;
     background-size: 200px;
+    &::placeholder{
+      color: #777;
+    }
+    &:focus,
+    &:active {
+     border: none;
+      box-shadow: none;
+    }
   }
 
   .submit {

@@ -37,9 +37,9 @@
           <li>
             <router-link to="/essaypoetry">随笔</router-link>
           </li>
-          <!-- <li>
+          <li>
             <router-link to="/music">音乐</router-link>
-          </li> -->
+          </li>
           <li>
             <router-link to="/friends">友链</router-link>
           </li>

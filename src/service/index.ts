@@ -2,4 +2,6 @@ const MUSIC_BASE_URL = "https://api.i-meto.com/meting/api";
 const ESSAY_LIST = "/inwe/essay/getEssayList";
 const ESSAY_INSERT = "/inwe/essay/insertEssay";
 
-export { MUSIC_BASE_URL, ESSAY_LIST, ESSAY_INSERT };
+const COMMENT_ADD ="/inwe/comment/addComment"
+
+export { MUSIC_BASE_URL, ESSAY_LIST, ESSAY_INSERT,COMMENT_ADD };
