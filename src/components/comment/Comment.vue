@@ -3,8 +3,25 @@
     <div class="comments clearfix">
       <div class="response-content zdypl">
         <span class="response">发表评论</span>
-        <a-form   ref="commentForm" :model="form" id="comment-form" class="comment-form">
-          <div class="clearfix main-info">
+        <a-form
+          ref="commentForm"
+          :model="form"
+          id="comment-form"
+          class="comment-form"
+        >
+          <div v-if="hasLocal||!showUsrInfo" class="un-select">
+            <span class="red">{{ form.name }}</span>
+            <span> 欢迎回来, </span>
+            <span
+              class="pointer red"
+              @click="() => (showUsrInfo = !showUsrInfo)"
+            >
+              修改昵称
+            </span>
+            <span>?</span>
+          </div>
+          <div class="ytx" v-if="hasLocal||!showUsrInfo"></div>
+          <div class="clearfix main-info" v-if="showUsrInfo">
             <a-form-item name="name">
               <a-input
                 v-model:value="form.name"
@@ -21,7 +38,7 @@
                 autocomplete="off"
                 class="input-control form-control"
                 placeholder="邮箱(必填哦)"
-                :maxlength="100"
+                :maxlength="64"
                 required
               />
             </a-form-item>
@@ -32,13 +49,13 @@
                 autocomplete="off"
                 class="input-control form-control"
                 placeholder="博客地址(https://)"
-                :maxlength="100"
+                :maxlength="64"
               />
             </a-form-item>
           </div>
 
           <a-form-item name="comment">
-            <a-textarea 
+            <a-textarea
               type="textarea"
               autocomplete="off"
               v-model:value="form.comment"
@@ -54,7 +71,7 @@
       </div>
       <div class="comment-list">
         <ul>
-          <li>
+          <li v-for="item in data" :key="item.cid">
             <div class="comment-header">
               <img
                 class="avatar"
@@ -72,28 +89,28 @@
               </span>
             </div>
             <div class="comment-content">
-              <p>好久不见呀，来康康</p>
+              <p>{{item.content}}</p>
             </div>
             <div class="comment-meta">
-              <time>10月1日</time>
+              <time>{{ $filters.timestampToTime(item.createTime)}}</time>
               &nbsp;&nbsp;
               <!-- 时间 -->
 
               <span>
-                <i class="fa fa-windows" />
-                <i class="fa fa-apple" />
-                Windows 10
+                <i class="fa fa-apple" v-if="!item.operatingSystem.includes('Windows')"/>
+                <i class="fa fa-windows" v-else />
+                {{ item.operatingSystem }}
               </span>
               &nbsp;&nbsp;
               <!-- 设备型号 eg：windows 10 / macos -->
 
               <span>
-                <i class="fa fa-chrome" />
-                <i class="fa fa-safari" />
+                <i :class="['fa',`fa-${item.browserIcon}`]" style="margin-right:2px" />
+                <!-- <i class="fa fa-safari" />
                 <i class="fa fa-firefox" />
                 <i class="fa fa-edge" />
-                <i class="fa fa-opera" />
-                Chrome 105
+                <i class="fa fa-opera" /> -->
+               {{item.browser}}
               </span>
               <!-- 浏览器版本 -->
             </div>
@@ -105,39 +122,126 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, } from "vue";
-import {addComment} from "@/service/comment"
-import { browserRedirect,getExploreName ,getExploreVersion} from "@/utils/utils";
+import {
+  reactive,
+  ref,
+  computed,
+  watchEffect,
+  onMounted,
+  ComputedRef,
+} from "vue";
+import { addComment,getCommentsList } from "@/service/comment";
+import {
+  COMMENT_USER_BLOG,
+  COMMENT_USER_EMAIL,
+  COMMENT_USER_NAME,
+} from "@/utils/utils";
+import {
+  browserRedirect,
+  getExploreName,
+  getExploreVersion,
+} from "@/utils/utils";
 
-interface IForm{
-  name:string,
-  comment:string,
-  email:string,
-  blogUrl:string
-}
-const form=reactive<IForm>({
-  name:'1111name',
-  comment:'comment2222',
-  email:'email111',
-  blogUrl:'blogUrl',
-})
-function handleClick() {
-  const operatingSystem= browserRedirect();
-  const browserIcon=getExploreName().toLowerCase()
-  const browser =`${getExploreName()} ${getExploreVersion()}` 
-  const params={
-    commentName:form.name,
-    commentEmail:form.email,
-    blogUrl:form.blogUrl,
-    comments:form.comment,
-    path:location.pathname,
-    operatingSystem,
-    browser,
-    browserIcon
+interface IComment{
+    browser:string,
+    browserIcon:string,
+    cid:string,
+    content:string,
+    fromUid:string,
+    operatingSystem:string,
+    path:string,
+    replyId:string | null,
+    replyType:string,
+    toUid:string | null,
+    createTime:number,
   }
-  console.error(params);
-  addComment(params)
+interface IForm {
+  name: string;
+  comment: string;
+  email: string;
+  blogUrl: string;
 }
+const showUsrInfo = ref(true);
+const form = reactive<IForm>({
+  name: decodeURIComponent(
+    window.atob(localStorage.getItem(COMMENT_USER_NAME) || "")
+  ),
+  email: decodeURIComponent(
+    window.atob(localStorage.getItem(COMMENT_USER_EMAIL) || "")
+  ),
+  blogUrl: decodeURIComponent(
+    window.atob(localStorage.getItem(COMMENT_USER_BLOG) || "")
+  ),
+  comment: "",
+});
+
+async function handleClick() {
+  if (!form.name || !form.email || !form.comment) return;
+  localStorage.setItem(
+    COMMENT_USER_NAME,
+    window.btoa(encodeURIComponent(form.name))
+  );
+  localStorage.setItem(
+    COMMENT_USER_EMAIL,
+    window.btoa(encodeURIComponent(form.email))
+  );
+  localStorage.setItem(
+    COMMENT_USER_BLOG,
+    window.btoa(encodeURIComponent(form.blogUrl))
+  );
+
+  const system = browserRedirect();
+  const browserIcon = getExploreName().toLowerCase();
+  const browser = `${getExploreName()} ${getExploreVersion()}`;
+  const params = {
+    name: form.name,
+    email: form.email,
+    blogUrl: form.blogUrl,
+    comments: form.comment,
+    path: location.pathname,
+    system,
+    browser,
+    browserIcon,
+    replyType:'comment'
+  };
+  const res = await addComment(params);
+  getCommentList()
+  showUsrInfo.value = false;
+  form.comment=''
+}
+let hasLocal: ComputedRef<boolean | null>;
+  hasLocal = computed(() => {
+    if (
+      localStorage.getItem(COMMENT_USER_NAME) &&
+      localStorage.getItem(COMMENT_USER_EMAIL) &&
+      localStorage.getItem(COMMENT_USER_BLOG)
+    )
+      return true;
+    return false;
+  });
+  watchEffect(() => {
+    if (hasLocal.value) {
+      return (showUsrInfo.value = false);
+    }
+    showUsrInfo.value = true;
+  });
+
+
+    //列表
+    const data = reactive<IComment[]>([]);
+
+    getCommentList()
+function getCommentList(){
+  getCommentsList({}).then(res=>{
+    data.splice(0,data.length)
+res.data.data.forEach((item:IComment)=>{
+  data.push(item)
+})
+console.error(data);
+  
+})
+}
+
 </script>
 
 <style lang="less">
@@ -223,17 +327,17 @@ function handleClick() {
     overflow: hidden;
     height: 150px !important;
     padding: 10px 0;
-     border: none;
+    border: none;
     resize: none;
     border-radius: 0;
     background: #fff url("../../assets/comments-bg.jpg") right center no-repeat;
     background-size: 200px;
-    &::placeholder{
+    &::placeholder {
       color: #777;
     }
     &:focus,
     &:active {
-     border: none;
+      border: none;
       box-shadow: none;
     }
   }
@@ -328,6 +432,17 @@ function handleClick() {
       font-size: 12px;
       user-select: none;
     }
+  }
+  .ytx {
+    margin-top: 6px;
+    border-bottom: 1px dashed #ddd;
+    clear: both;
+  }
+  .red {
+    color: #eb5055;
+  }
+  .pointer {
+    cursor: pointer;
   }
 }
 </style>

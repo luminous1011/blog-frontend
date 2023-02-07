@@ -3,5 +3,6 @@ const ESSAY_LIST = "/inwe/essay/getEssayList";
 const ESSAY_INSERT = "/inwe/essay/insertEssay";
 
 const COMMENT_ADD ="/inwe/comment/addComment"
+const COMMENT_LIST ="/inwe/comment/getCommentsList"
 
-export { MUSIC_BASE_URL, ESSAY_LIST, ESSAY_INSERT,COMMENT_ADD };
+export { MUSIC_BASE_URL, ESSAY_LIST, ESSAY_INSERT,COMMENT_ADD,COMMENT_LIST };

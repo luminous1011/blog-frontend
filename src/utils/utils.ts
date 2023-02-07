@@ -35,6 +35,10 @@ const WIND_10="Windows NT 10"
 const WINDOWS_10="Windows 10"
 
 
+const COMMENT_BASE='8664e4e4cb09d6954da82203d8fca900__vue3_typescript_remember_author_'
+export const COMMENT_USER_NAME=`${COMMENT_BASE}USER_NAME`
+export const COMMENT_USER_EMAIL=`${COMMENT_BASE}USER_EMAIL`
+export const COMMENT_USER_BLOG=`${COMMENT_BASE}USER_BLOG`
 
 /**
  * 节流函数（一段时间内只触发一次）
