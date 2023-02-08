@@ -1,119 +1,84 @@
 <template>
   <div class="comment-content">
     <div class="comments clearfix">
-      <div class="response-content zdypl">
-        <span class="response">发表评论</span>
-        <a-form
-          ref="commentForm"
-          :model="form"
-          id="comment-form"
-          class="comment-form"
-        >
-          <div v-if="hasLocal||!showUsrInfo" class="un-select">
-            <span class="red">{{ form.name }}</span>
-            <span> 欢迎回来, </span>
-            <span
-              class="pointer red"
-              @click="() => (showUsrInfo = !showUsrInfo)"
-            >
-              修改昵称
-            </span>
-            <span>?</span>
-          </div>
-          <div class="ytx" v-if="hasLocal||!showUsrInfo"></div>
-          <div class="clearfix main-info" v-if="showUsrInfo">
-            <a-form-item name="name">
-              <a-input
-                v-model:value="form.name"
-                autocomplete="off"
-                class="input-control form-control"
-                placeholder="昵称(必填哦)"
-                :maxlength="20"
-                required
-              />
-            </a-form-item>
-            <a-form-item name="email">
-              <a-input
-                v-model:value="form.email"
-                autocomplete="off"
-                class="input-control form-control"
-                placeholder="邮箱(必填哦)"
-                :maxlength="64"
-                required
-              />
-            </a-form-item>
-
-            <a-form-item name="blogUrl">
-              <a-input
-                v-model:value="form.blogUrl"
-                autocomplete="off"
-                class="input-control form-control"
-                placeholder="博客地址(https://)"
-                :maxlength="64"
-              />
-            </a-form-item>
-          </div>
-
-          <a-form-item name="comment">
-            <a-textarea
-              type="textarea"
-              autocomplete="off"
-              v-model:value="form.comment"
-              class="form-control"
-              id="textarea"
-              placeholder="请填写真实邮箱哦方便能第一时间收到回复。 中国人不骗中国人，所以不要一个中文都没有噢 ≧◉◡◉≦（屏蔽国外恶意广告）"
-              required
-            ></a-textarea>
-          </a-form-item>
-
-          <button class="submit" @click="handleClick">提交</button>
-        </a-form>
-      </div>
+      <Form
+        v-show="!replyId"
+        :form="form"
+        :handleClick="handleClick"
+        :showUsrInfo="showUsrInfo"
+        :hasLocal="hasLocal"
+        :handleShowUsrInfo="handleShowUsrInfo"
+      />
       <div class="comment-list">
         <ul>
           <li v-for="item in data" :key="item.cid">
-            <div class="comment-header">
-              <img
-                class="avatar"
-                src="../../assets/default-avatar.png"
-                width="80"
-                height="80"
-              />
-              <span class="comment-author"
-                ><a
-                  href="https://luminous011.github.io"
-                  target="_blank"
-                  rel="external nofollow"
-                  >luminous1011</a
-                >
-              </span>
-            </div>
-            <div class="comment-content">
-              <p>{{item.content}}</p>
-            </div>
-            <div class="comment-meta">
-              <time>{{ $filters.timestampToTime(item.createTime)}}</time>
-              &nbsp;&nbsp;
-              <!-- 时间 -->
+            <div class="comment-view">
+              <div class="comment-header">
+                <img
+                  class="avatar"
+                  src="../../assets/default-avatar.png"
+                  width="80"
+                  height="80"
+                />
+                <span class="comment-author"
+                  ><a
+                    href="https://luminous011.github.io"
+                    target="_blank"
+                    rel="external nofollow"
+                    >{{ item.fromUser.username }}</a
+                  >
+                </span>
+              </div>
+              <div class="comment-content">
+                <p>{{ item.content }}</p>
+              </div>
+              <div class="comment-meta">
+                <time>{{ $filters.timestampToTime(item.createTime) }}</time>
+                &nbsp;&nbsp;
+                <!-- 时间 -->
 
-              <span>
-                <i class="fa fa-apple" v-if="!item.operatingSystem.includes('Windows')"/>
-                <i class="fa fa-windows" v-else />
-                {{ item.operatingSystem }}
-              </span>
-              &nbsp;&nbsp;
-              <!-- 设备型号 eg：windows 10 / macos -->
+                <span>
+                  <i
+                    class="fa fa-apple"
+                    v-if="item.operatingSystem.includes('Mac')"
+                  />
+                  <i
+                    class="fa fa-windows"
+                    v-if="item.operatingSystem.includes('Windows')"
+                  />
+                  {{ item.operatingSystem }}
+                </span>
+                &nbsp;&nbsp;
+                <!-- 设备型号 eg：windows 10 / macos -->
 
-              <span>
-                <i :class="['fa',`fa-${item.browserIcon}`]" style="margin-right:2px" />
-                <!-- <i class="fa fa-safari" />
+                <span>
+                  <i
+                    :class="['fa', `fa-${item.browserIcon}`]"
+                    style="margin-right: 2px"
+                  />
+                  <!-- <i class="fa fa-safari" />
                 <i class="fa fa-firefox" />
                 <i class="fa fa-edge" />
                 <i class="fa fa-opera" /> -->
-               {{item.browser}}
-              </span>
-              <!-- 浏览器版本 -->
+                  {{ item.browser }}
+                </span>
+                <!-- 浏览器版本 -->
+                <span
+                  class="comment-reply"
+                  @click="handleReply(item.fromUid)"
+                ></span>
+              </div>
             </div>
+            <Form
+              :form="form"
+              :handleClick="handleClick"
+              :showUsrInfo="showUsrInfo"
+              :hasLocal="hasLocal"
+              :handleShowUsrInfo="handleShowUsrInfo"
+              v-if="replyId === item.fromUid"
+              :isReply="isReply"
+              :cancelReply="cancelReply"
+            />
           </li>
         </ul>
       </div>
@@ -122,15 +87,9 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  reactive,
-  ref,
-  computed,
-  watchEffect,
-  onMounted,
-  ComputedRef,
-} from "vue";
-import { addComment,getCommentsList } from "@/service/comment";
+import { reactive, ref, computed, watchEffect, ComputedRef } from "vue";
+import { addComment, getCommentsList,replyComment } from "@/service/comment";
+import Form from "./components/Form.vue";
 import {
   COMMENT_USER_BLOG,
   COMMENT_USER_EMAIL,
@@ -142,26 +101,37 @@ import {
   getExploreVersion,
 } from "@/utils/utils";
 
-interface IComment{
-    browser:string,
-    browserIcon:string,
-    cid:string,
-    content:string,
-    fromUid:string,
-    operatingSystem:string,
-    path:string,
-    replyId:string | null,
-    replyType:string,
-    toUid:string | null,
-    createTime:number,
-  }
+interface IUser {
+  username: string;
+  uid: string;
+  email: string;
+  blogUrl: string;
+  avatar: string | null;
+}
+interface IComment {
+  browser: string;
+  browserIcon: string;
+  cid: string;
+  content: string;
+  fromUid: string;
+  operatingSystem: string;
+  path: string;
+  replyId: string | null;
+  replyType: string;
+  toUid: string | null;
+  createTime: number;
+  fromUser: IUser;
+  toUser: IUser;
+}
 interface IForm {
   name: string;
   comment: string;
   email: string;
   blogUrl: string;
 }
+const replyId = ref("");
 const showUsrInfo = ref(true);
+const isReply = ref(true);
 const form = reactive<IForm>({
   name: decodeURIComponent(
     window.atob(localStorage.getItem(COMMENT_USER_NAME) || "")
@@ -202,46 +172,58 @@ async function handleClick() {
     system,
     browser,
     browserIcon,
-    replyType:'comment'
+    replyType: "comment",
   };
-  const res = await addComment(params);
-  getCommentList()
+  if(!replyId.value){
+    await addComment(params);
+  }else{
+    const obj= {
+      replyId:replyId.value,
+      replyType:"reply"
+    }
+    await replyComment(Object.assign({},params,obj))
+  }
+  getCommentList();
   showUsrInfo.value = false;
-  form.comment=''
+  form.comment = "";
 }
 let hasLocal: ComputedRef<boolean | null>;
-  hasLocal = computed(() => {
-    if (
-      localStorage.getItem(COMMENT_USER_NAME) &&
-      localStorage.getItem(COMMENT_USER_EMAIL) &&
-      localStorage.getItem(COMMENT_USER_BLOG)
-    )
-      return true;
-    return false;
+hasLocal = computed(() => {
+  if (
+    localStorage.getItem(COMMENT_USER_NAME) &&
+    localStorage.getItem(COMMENT_USER_EMAIL)
+  )
+    return true;
+  return false;
+});
+watchEffect(() => {
+  if (hasLocal.value) {
+    return (showUsrInfo.value = false);
+  }
+  showUsrInfo.value = true;
+});
+
+//列表
+const data = reactive<IComment[]>([]);
+
+getCommentList();
+function getCommentList() {
+  getCommentsList({}).then((res) => {
+    data.splice(0, data.length);
+    res.data.data.forEach((item: IComment) => {
+      data.push(item);
+    });
   });
-  watchEffect(() => {
-    if (hasLocal.value) {
-      return (showUsrInfo.value = false);
-    }
-    showUsrInfo.value = true;
-  });
-
-
-    //列表
-    const data = reactive<IComment[]>([]);
-
-    getCommentList()
-function getCommentList(){
-  getCommentsList({}).then(res=>{
-    data.splice(0,data.length)
-res.data.data.forEach((item:IComment)=>{
-  data.push(item)
-})
-console.error(data);
-  
-})
 }
-
+function handleShowUsrInfo() {
+  showUsrInfo.value = !showUsrInfo.value;
+}
+function handleReply(uid: string) {
+  replyId.value = uid;
+}
+function cancelReply(){
+  replyId.value=""
+}
 </script>
 
 <style lang="less">
@@ -262,6 +244,10 @@ console.error(data);
     display: block;
     padding: 30px 0 30px 20px;
     color: #5f5f5f;
+    span+span{
+      margin-left: 10px;
+      cursor: pointer;
+    }
   }
   .zdypl .response {
     border-top: 1px #dcdcdc dashed;
@@ -443,6 +429,53 @@ console.error(data);
   }
   .pointer {
     cursor: pointer;
+  }
+  .comment-list .comment-form {
+    border: 1.8px #d6d6d6 dashed;
+    padding: 10px !important;
+    margin: 0;
+  }
+  .comment-reply {
+    display: none;
+    float: right;
+    background-color: #dcdcdc;
+    width: 24px;
+    height: 24px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 24px;
+    background-image: url("../../assets/reply-ico.png");
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  .comment-view{
+    padding: 10px;
+  }
+  .comment-view:hover .comment-reply {
+    display: block;
+  }
+  .comment-reply:hover {
+    opacity: 1;
+  }
+  .hover-line{
+    position: relative;
+    &::after {
+        background: currentColor;
+        content: "";
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        top: 100%;
+        transform: translateX(-50%);
+        transition: width 0.2s ease;
+        width: 0;
+      }
+      &:hover::after {
+        width: 100%;
+      }
   }
 }
 </style>
