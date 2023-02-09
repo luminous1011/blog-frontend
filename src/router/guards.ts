@@ -20,10 +20,10 @@ const progressStart = (
 ) => {
   if (!NProgress.isStarted()) {
     NProgress.start();
-    console.error(1);
+    // console.error(1);
   }
   next();
-  console.error(2);
+  // console.error(2);
 };
 
 /**

@@ -10,7 +10,6 @@ import { IBootstrapProps } from "@/interface/bootstrap";
 import { IAxiosInterceptors } from "@/interface/utils/axios-interceptors";
 axios.defaults.timeout = 5000;
 axios.defaults.baseURL = import.meta.env.MODE === "development" ? "/api" : "";
-console.error(import.meta.env.MODE);
 
 // http method
 const METHOD: IMethod = {
