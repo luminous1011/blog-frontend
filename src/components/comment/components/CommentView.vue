@@ -19,7 +19,7 @@
     <div class="comment-content">
       <p>
         <span v-if="item.replyType === 'reply'" class="reply-user">
-          <a :href="`#comment-${item.toUid}`">@{{ item.replyUser.username }}</a>
+          <a :href="`#comment-${item.fromCid}`">@{{ item.replyUser.username }}</a>
         </span>
         <span>
           {{ item.content }}
@@ -27,7 +27,7 @@
       </p>
     </div>
     <div class="comment-meta">
-      <time>{{ $filters.timestampToTime(item.createTime) }}</time>
+      <time>{{ commentFormatTime(item.createTime) }}</time>
       &nbsp;&nbsp;
       <!-- 时间 -->
 
@@ -63,7 +63,7 @@
 <script setup lang="ts">
 import { defineProps, toRefs } from "vue";
 import { IComment } from "../type";
-
+import {commentFormatTime} from '@/utils/time'
 const props = defineProps<{
   item: IComment;
   handleReply: (a: IComment, b: string) => void;

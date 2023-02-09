@@ -21,6 +21,7 @@ export interface IComment {
   replyId: string | null;
   replyUser: IUser;
   children: IComment[];
+  fromCid:string
 }
 
 export interface IForm {

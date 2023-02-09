@@ -163,7 +163,9 @@ watchEffect(() => {
 onMounted(() => getCommentList());
 
 function getCommentList() {
-  getCommentsList({}).then((res) => {
+  getCommentsList({
+    path:location.pathname
+  }).then((res) => {
     data.splice(0, data.length);
     res.data.data.forEach((item: IComment) => {
       data.push(item);
