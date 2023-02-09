@@ -74,12 +74,8 @@
 
 <script lang="ts" setup>
 import { defineProps, toRefs } from "vue";
-interface IForm {
-  name: string;
-  comment: string;
-  email: string;
-  blogUrl: string;
-}
+import { IForm } from "../type";
+
 const props = defineProps<{
   form: IForm;
   handleClick: Promise<void>;
