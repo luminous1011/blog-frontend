@@ -22,7 +22,7 @@ export function timestampToTime(timestamp: number) {
 }
 
 export function commentFormatTime(timestamp: number) {
-  const now = new Date().getTime() ; //1675932085812
+  const now = new Date().getTime() ; //1 675 932 085 812
 
   const temp = now - timestamp;
   if (temp / ONE_SECOND < 60) {
