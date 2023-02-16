@@ -30,14 +30,25 @@ export function commentFormatTime(timestamp: number) {
   } else if (temp / ONE_MINUTE < 60) {
     return Math.ceil(temp / ONE_MINUTE) + " 分钟前";
   } else if (temp / ONE_HOUR < 24) {
-    return Math.ceil(temp / ONE_HOUR) + " 小时前";
+    return Math.floor(temp / ONE_HOUR) + " 小时前";
   } else if (temp / ONE_HOUR > 24 && temp / ONE_HOUR < 48) {
     return "昨天 " + hourMinute(timestamp);
   } else if (temp / ONE_DAY < 7) {
-    return Math.ceil(temp / ONE_DAY) + " 天前";
+    return Math.floor(temp / ONE_DAY) + " 天前";
   } else {
-    return timestampToTime(timestamp);
+    return monthDay(timestamp);
   }
+}
+
+function monthDay(timestamp: number) {
+  const date = new Date(timestamp);
+
+  const M =
+  (date.getMonth() + 1 < 10
+    ? "" + (date.getMonth() + 1)
+    : date.getMonth() + 1) + "月";
+const D = date.getDate() + "日";
+  return M + D;
 }
 
 function hourMinute(timestamp: number) {
