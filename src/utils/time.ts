@@ -23,17 +23,8 @@ export function timestampToTime(timestamp: number) {
 export function commentFormatTime(timestamp: number) {
   const now = new Date().getTime(); //1 675 932 085 812
   // 当前零点的时间
-  const zeroDate = now - (now % 86400) - 3600 * 8;
-
+  const zeroDate = now - (now % ONE_DAY);
   const temp = now - timestamp;
-  console.error(zeroDate);
-  console.error(now);
-  console.error(timestamp);
-  console.error(temp);
-  console.error(now - zeroDate);
-  // if(temp>(timestamp-zeroDate)){
-  //   return "昨天 " + hourMinute(timestamp);
-  // }
   if (temp / ONE_SECOND < 60 && timestamp > zeroDate) {
     return Math.ceil(temp / ONE_SECOND) + " 秒前";
   } else if (temp / ONE_MINUTE < 60 && timestamp > zeroDate) {

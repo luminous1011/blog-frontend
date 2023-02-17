@@ -1,5 +1,6 @@
 <template>
   <div class="comment-content" id="comment">
+    <Cee />
     <div class="comments clearfix">
       <Form
         v-show="!tempCid"
@@ -63,6 +64,7 @@ import {
   onMounted,
 } from "vue";
 import { IComment, IForm } from "./type";
+import Cee from './components/CommentView'
 import {
   COMMENT_USER_BLOG,
   COMMENT_USER_EMAIL,

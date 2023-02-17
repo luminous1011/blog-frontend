@@ -6,9 +6,11 @@
 import APlayer from 'aplayer/dist/APlayer.min.js';
 import 'aplayer/dist/APlayer.min.css'
 import type { PropType } from "@vue/runtime-core";
-import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref ,} from "vue";
 import { getMusic } from "@/service/music";
 import { AxiosResponse } from 'axios';
+
+// const APlayer = defineAsyncComponent(()=>import("aplayer/dist/APlayer.min.js"))
 const playerRef = ref();
 let instance:Object;
 
@@ -162,7 +164,7 @@ onMounted(() => {
 });
 // 销毁
 onBeforeUnmount(() => {
-  instance.destroy();
+  instance?.destroy();
 });
 </script>
 

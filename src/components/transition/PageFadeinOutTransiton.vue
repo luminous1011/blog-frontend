@@ -64,19 +64,19 @@ function scrollThrottle() {
   const inHeight = offsetBottom - window.innerHeight;
   const transY = offset.height - offsetBottom + window.innerHeight;
   if (offsetTop <= window.innerHeight && offsetBottom >= 0) {
-    elem.classList.add("animation-in");
+    elem?.classList.add("animation-in");
     y.value = 0;
     if (inHeight < offset.height * 0.85) {
-      elem.classList.add("animate__slideInUp", "animation-active");
+      elem?.classList.add("animate__slideInUp", "animation-active");
     } else {
-      elem.classList.remove("animate__slideInUp", "animation-active");
+      elem?.classList.remove("animate__slideInUp", "animation-active");
       if (transY < 50) {
         y.value = 150;
-        elem.classList.remove("animation-in");
+        elem?.classList.remove("animation-in");
       }
     }
   } else {
-    elem.classList.remove("animation-in");
+    elem?.classList.remove("animation-in");
   }
 }
 
