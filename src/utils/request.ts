@@ -8,7 +8,7 @@ import Cookie from "js-cookie";
 import { IMethod, IRESULT_CODE } from "@/interface/utils/request";
 import { IBootstrapProps } from "@/interface/bootstrap";
 import { IAxiosInterceptors } from "@/interface/utils/axios-interceptors";
-axios.defaults.timeout = 5000;
+// axios.defaults.timeout = 5000;
 axios.defaults.baseURL = import.meta.env.MODE === "development" ? "/api" : "";
 
 // http method
