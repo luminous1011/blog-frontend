@@ -7,8 +7,9 @@ export async function addComment(params: any) {
 }
 
 export async function getCommentsList(params: any) {
-  return request(COMMENT_LIST, METHOD.GET, params);
+  return request(COMMENT_LIST, METHOD.GET, Object.assign({},params));
 }
+
 export async function replyComment(params: any) {
   return request(COMMENT_REPLY, METHOD.POST, params);
 }

@@ -18,6 +18,7 @@ const progressStart = (
   next: NavigationGuardNext,
   options: IBootstrapProps
 ) => {
+  
   if (!NProgress.isStarted()) {
     NProgress.start();
     // console.error(1);
@@ -34,6 +35,8 @@ const progressDone = (store: Store<object>) => {
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
   store.commit("setMenuState", false);
+  console.error(location.pathname);
+
   NProgress.done();
 };
 

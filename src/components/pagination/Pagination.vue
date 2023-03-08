@@ -1,5 +1,6 @@
 <template>
   <a-pagination
+  v-show="pagination.total>=pagination.pageSize"
     class="pagination"
     v-model:current="pagination.page"
     :total="pagination.total"

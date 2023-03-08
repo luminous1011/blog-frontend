@@ -87,6 +87,7 @@ onMounted(async () => {
 
 <style lang="less">
 @import "./index.less";
+
 .red{
   color: #ea5055;
 }

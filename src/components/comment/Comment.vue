@@ -1,6 +1,5 @@
 <template>
   <div class="comment-content" id="comment">
-    <Cee />
     <div class="comments clearfix">
       <Form
         v-show="!tempCid"
@@ -10,7 +9,10 @@
         :hasLocal="hasLocal"
         :handleShowUsrInfo="handleShowUsrInfo"
       />
-      <div class="comment-list">
+      <div class="comment-list" id="comment-list">
+        <div class="loading" v-show="spinning">
+          <a-spin :spinning="spinning" />
+        </div>
         <ul>
           <li v-for="item in data" :key="item.cid">
             <CommentView
@@ -50,6 +52,9 @@
         </ul>
       </div>
     </div>
+    <footer>
+      <Pagination :pagination="pagination" />
+    </footer>
   </div>
 </template>
 
@@ -62,9 +67,9 @@ import {
   ComputedRef,
   defineAsyncComponent,
   onMounted,
+  watch,
 } from "vue";
 import { IComment, IForm } from "./type";
-import Cee from './components/CommentView'
 import {
   COMMENT_USER_BLOG,
   COMMENT_USER_EMAIL,
@@ -81,16 +86,35 @@ const Form = defineAsyncComponent(() => import("./components/Form.vue"));
 const CommentView = defineAsyncComponent(
   () => import("./components/CommentView.vue")
 );
+const Pagination = defineAsyncComponent(
+  () => import("@/components/pagination/Pagination.vue")
+);
+
+interface IPagination {
+  page: number;
+  pageSize: number;
+  total: number;
+}
 
 const replyId = ref("");
 const showUsrInfo = ref(true);
 const isReply = ref(true);
+const spinning = ref(true);
 let hasLocal: ComputedRef<boolean | null>;
+//分页器
+const pagination = reactive<IPagination>({
+  page: 1,
+  pageSize: 10,
+  total: 0,
+});
 //列表
 const data = reactive<IComment[]>([]);
 const fromCid = ref("");
 const tempCid = ref("");
-
+const cb = () => {
+        const target = document.querySelector(`#comment`);
+        target && target.scrollIntoView();
+      };
 const form = reactive<IForm>({
   name: decodeURIComponent(
     window.atob(localStorage.getItem(COMMENT_USER_NAME) || "")
@@ -122,6 +146,7 @@ async function handleClick() {
   const system = browserRedirect();
   const browserIcon = getExploreName().toLowerCase();
   const browser = `${getExploreName()} ${getExploreVersion()}`;
+
   const params = {
     name: form.name,
     email: form.email,
@@ -143,7 +168,8 @@ async function handleClick() {
     };
     await replyComment(Object.assign({}, params, obj));
   }
-  getCommentList();
+
+  getCommentList(cb);
   showUsrInfo.value = false;
   form.comment = "";
   cancelReply();
@@ -162,16 +188,33 @@ watchEffect(() => {
   }
   showUsrInfo.value = true;
 });
-onMounted(() => getCommentList());
+onMounted(async () => {
+  await getCommentList();
+  watch(
+    () => pagination.page,
+    async () => {
+      await getCommentList(cb);
+    }
+  );
+});
 
-function getCommentList() {
+function getCommentList(cb?: Function) {
+  cb && cb();
+  spinning.value = true;
+  data.splice(0, data.length);
   getCommentsList({
-    path:location.pathname
+    path: location.pathname,
+    page: pagination.page,
+    pageSize: pagination.pageSize,
   }).then((res) => {
-    data.splice(0, data.length);
-    res.data.data.forEach((item: IComment) => {
+    spinning.value = false;
+    const { list = [], pageNum, pageSize, total } = res?.data?.data ?? {};
+    list.forEach((item: IComment) => {
       data.push(item);
     });
+    pagination.page = pageNum;
+    pagination.pageSize = pageSize;
+    pagination.total = total;
   });
 }
 function handleShowUsrInfo() {
@@ -191,4 +234,11 @@ function cancelReply() {
 
 <style lang="less">
 @import "./index.less";
+.loading {
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  width: 100%;
+  align-items: center;
+}
 </style>
