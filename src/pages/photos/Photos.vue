@@ -41,7 +41,7 @@
 <script lang="ts" setup>
 import { useScreenResize, load } from "./actions";
 import { onMounted } from "vue";
-
+import {insertPhoto} from '@/service/photoService'
 useScreenResize();
 
 const data = [
@@ -74,6 +74,7 @@ const data = [
   {imgUrl:'https://photo.tuchong.com/27380778/f/1046688358.jpg',time:'2022.09.18',event:'一只叫Amy的流氓🐱🐱'},
 ]
 
+insertPhoto({src:"https://photo.tuchong.com/27380778/f/1046688358.jpg",blankSrc:"222"})
 function handleTarget(targetUrl:string){
   window.open(targetUrl,'_blank')
 }
