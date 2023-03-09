@@ -54,6 +54,11 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: "/root",
+    name: "root",
+    component:()=>import('@/pages/root')
+  },
+  {
     path: "/404",
     name: "404",
     component: () => import("@/pages/error/404.vue"),//首页暂代404

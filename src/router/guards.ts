@@ -5,7 +5,7 @@ import "nprogress/nprogress.css";
 import { Store } from "vuex";
 
 NProgress.configure({ showSpinner: false });
-const DARK_HEADERS = ["/photos"];
+const DARK_HEADERS = ["/photos","/root"];
 /**
  * 进度条开始
  * @param to
