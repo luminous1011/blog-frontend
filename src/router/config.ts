@@ -2,13 +2,13 @@ import { RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
+    path: "/index",
     name: "首页",
-    redirect: "/home",
+    redirect: "/index",
     children: [
       {
-        path: "/home",
-        name: "home",
+        path: "/index",
+        name: "index",
         component: () => import("@/pages/home/Home.vue"),
       },
       {
@@ -54,7 +54,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
-    path: "/root",
+    path: "/",
     name: "root",
     component:()=>import('@/pages/root')
   },
