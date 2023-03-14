@@ -70,10 +70,10 @@
 </template>
 
 <script lang="ts" setup>
-import Meta from "@/components/meta/Meta.vue";
-import Moment from "@/components/moment/Moment.vue";
+import Meta from "@/components/meta";
+import Moment from "@/components/moment";
 import { BLOG_HOME } from "@/utils/utils";
-import Pagination from "@/components/pagination/Pagination.vue";
+import Pagination from "@/components/pagination";
 import { MarkdownPro } from 'vue-meditor'
 
 import win11_00 from '@/assets/win11-00.png'

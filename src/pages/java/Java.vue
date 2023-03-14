@@ -33,8 +33,8 @@
 </template>
 
 <script lang="ts" setup>
-import Field from "@/components/field/Field.vue";
-import Pagination from "@/components/pagination/Pagination.vue";
+import Field from "@/components/field";
+import Pagination from "@/components/pagination";
 import { ThemeBg, ThemeIco } from "@/utils/utils";
 
 const archives = { posts: 132, tags: 366, commits: 2288, views: 27988 };

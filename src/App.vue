@@ -14,9 +14,9 @@
 </template>
 
 <script lang="ts" setup>
-import AdminHeader from "@/components/header/Header.vue";
-import AdminFooter from "@/components/footer/Footer.vue";
-import TabsView from "@/components/tabs/TabsView.vue";
+import AdminHeader from "@/components/header";
+import AdminFooter from "@/components/footer";
+import TabsView from "@/components/tabs";
 
 
 

@@ -87,7 +87,7 @@ const CommentView = defineAsyncComponent(
   () => import("./components/CommentView.vue")
 );
 const Pagination = defineAsyncComponent(
-  () => import("@/components/pagination/Pagination.vue")
+  () => import("@/components/pagination")
 );
 
 interface IPagination {
@@ -112,9 +112,9 @@ const data = reactive<IComment[]>([]);
 const fromCid = ref("");
 const tempCid = ref("");
 const cb = () => {
-        const target = document.querySelector(`#comment`);
-        target && target.scrollIntoView();
-      };
+  const target = document.querySelector(`#comment`);
+  target && target.scrollIntoView();
+};
 const form = reactive<IForm>({
   name: decodeURIComponent(
     window.atob(localStorage.getItem(COMMENT_USER_NAME) || "")

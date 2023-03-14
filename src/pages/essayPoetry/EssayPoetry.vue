@@ -41,12 +41,12 @@ import { defineAsyncComponent, onMounted, watch } from "vue";
 import { getEssayList, insertEssay } from "@/service/informalEssay";
 import UseGetEssayList from "./useGetEssayList";
 import {timestampToTime} from '@/utils/time'
-const Meta = defineAsyncComponent(() => import("@/components/meta/Meta.vue"));
+const Meta = defineAsyncComponent(() => import("@/components/meta"));
 const Title = defineAsyncComponent(
-  () => import("@/components/title/Title.vue")
+  () => import("@/components/title")
 );
 const Pagination = defineAsyncComponent(
-  () => import("@/components/pagination/Pagination.vue")
+  () => import("@/components/pagination")
 );
 
 const meta = { date: "2022-07-20", comments: 18, view: 188 };

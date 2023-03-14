@@ -52,10 +52,10 @@
 </template>
 
 <script lang="ts" setup>
-import Meta from "@/components/meta/Meta.vue";
-import Title from "@/components/title/Title.vue";
-import Comment from "@/components/comment/Comment.vue";
-import Pagination from "@/components/pagination/Pagination.vue";
+import Meta from "@/components/meta";
+import Title from "@/components/title";
+import Comment from "@/components/comment";
+import Pagination from "@/components/pagination";
 import {
   GITHUB_CHART_URL,
   GITHUB_CONTACT_URL,

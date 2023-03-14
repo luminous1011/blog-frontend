@@ -29,9 +29,9 @@
 </template>
 
 <script lang="ts" setup>
-import Meta from "@/components/meta/Meta.vue";
-import Title from "@/components/title/Title.vue";
-import Comment from "@/components/comment/Comment.vue";
+import Meta from "@/components/meta";
+import Title from "@/components/title";
+import Comment from "@/components/comment";
 import { BLOG_HOME, BLOG_FAVICON } from "@/utils/utils";
 
 const meta = { date: "2022-07-20", comments: 18, view: 188 };

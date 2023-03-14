@@ -60,7 +60,7 @@
 <script lang="ts" setup>
 import useMenuState from "./useMenuState";
 import useScrollEvent from "./useScrollEvent";
-import H5Menu from "@/components/menu/H5Menu.vue";
+import H5Menu from "@/components/menu";
 
 const { scrollSwitch } = useScrollEvent();
 const { menuState, changeMneuState } = useMenuState();

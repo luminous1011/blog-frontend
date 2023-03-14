@@ -16,9 +16,9 @@
 </template>
 
 <script lang="ts" setup>
-import Meta from "@/components/meta/Meta.vue";
-import Title from "@/components/title/Title.vue";
-import APlayer from "@/components/aplayer/APlayer.vue";
+import Meta from "@/components/meta";
+import Title from "@/components/title";
+import APlayer from "@/components/aplayer";
 
 // 歌曲相关网址
 // https://api.i-meto.com/meting/api?server=netease&type=album&id=80958771  音乐接口

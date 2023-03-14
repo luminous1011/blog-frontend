@@ -31,9 +31,9 @@
 </template>
 
 <script lang="ts" setup>
-import Comment from "@/components/comment/Comment.vue";
-import Title from "@/components/title/Title.vue";
-import Meta from "@/components/meta/Meta.vue";
+import Comment from "@/components/comment";
+import Title from "@/components/title";
+import Meta from "@/components/meta";
 import Code from "@/components/code/Code.vue";
 import { useRouter } from "vue-router";
 
