@@ -18,7 +18,8 @@ const TitleImpl: ComponentOptions = {
         return null;
       }
       const children = slots.default();
-
+      console.error(children);
+      
       return _createElementVNode(
         "div",
         {
