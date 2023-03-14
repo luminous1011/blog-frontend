@@ -5,7 +5,7 @@ const ONE_DAY = ONE_HOUR * 24;
 const ONE_MONTH = 2592000000;
 const ONE_YEAR = 31104000000;
 
-export function timestampToTime(timestamp: number) {
+export function timestampToTime(timestamp: number,temp?:string) {
   const date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
   const Y = date.getFullYear() + "-";
   const M =
@@ -16,7 +16,9 @@ export function timestampToTime(timestamp: number) {
   const h = date.getHours() + ":";
   const m = date.getMinutes() + ":";
   const s = date.getSeconds();
-
+  if(temp==="s"){
+    return Y + M + D + h + m.slice(0,m.length-1)
+  }
   return Y + M + D + h + m + s;
 }
 

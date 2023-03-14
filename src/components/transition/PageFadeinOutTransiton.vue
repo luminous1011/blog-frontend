@@ -28,7 +28,6 @@ const duration = ref(0.5);
 let scrollHandle:any;
 
 function throttle(action: Function, delay: number, iselapsed: boolean) {
-  console.error(2);
 
   let timeout: any = null;
   let lastRun = 0;

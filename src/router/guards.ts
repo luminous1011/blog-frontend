@@ -22,7 +22,7 @@ const progressStart = (
   if (!NProgress.isStarted()) {
     NProgress.start();
     // console.error(1);
-    console.error(to,from,next,options);
+    console.error(to,from,);
     
   }
   next();

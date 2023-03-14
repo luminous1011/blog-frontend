@@ -22,7 +22,7 @@
                 来自{{ item.source }}
               </span>
               <span class="time">{{
-                $filters.timestampToTime(item.updateTime)
+                timestampToTime(item.updateTime,'s')
               }}</span>
             </div>
           </div>
@@ -40,7 +40,7 @@ import { defineAsyncComponent, onMounted, watch } from "vue";
 // import img from "@/assets/2.jpg";
 import { getEssayList, insertEssay } from "@/service/informalEssay";
 import UseGetEssayList from "./useGetEssayList";
-
+import {timestampToTime} from '@/utils/time'
 const Meta = defineAsyncComponent(() => import("@/components/meta/Meta.vue"));
 const Title = defineAsyncComponent(
   () => import("@/components/title/Title.vue")
