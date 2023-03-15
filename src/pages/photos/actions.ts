@@ -20,6 +20,7 @@ function useScreenResize() {
  * 图片加载回调函数
  */
 const load = () => {
+  
   const $grid = $("#grid").masonry({
     itemSelector: ".grid-item",
     percentPosition: false,

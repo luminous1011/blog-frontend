@@ -22,18 +22,25 @@
         </p>
       </div>
     </div>
-    <div class="grid-item" v-for="item,index in data " :key="index" @click="handleTarget(item.targetUrl)">
-      <div> 
-        <div>
+    <div
+      class="grid-item"
+      v-for="(item, index) in data"
+      :key="index"
+      @click="handleTarget(item.blankSrc)"
+    >
+      <div :class="{pointer:item.blankSrc}">
+        <div >
           <img
             class="lazy"
             @load="load"
             src="https://rawchen.com/loading.gif"
-            :data-original="item.imgUrl"
+            :data-original="item.src"
           />
         </div>
       </div>
-      <div class="image_info">{{item.time}} {{item.event}}</div>
+      <div class="image_info">
+        {{ photoFormatTimestamp(item.shotTime) }} {{ item.des }}
+      </div>
     </div>
   </div>
 </template>
@@ -41,53 +48,25 @@
 <script lang="ts" setup>
 import { useScreenResize, load } from "./actions";
 import { onMounted } from "vue";
-import {insertPhoto} from '@/service/photoService'
-useScreenResize();
+import { photoFormatTimestamp } from "@/utils/time";
+import { data } from "./config";
 
-const data = [
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1053766879.jpg',time:'2022.12.11',event:'上海 · 安义夜巷',targetUrl:'https://tuchong.com/27380778/119361858/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1180054715.jpg',time:'2022.12.11',event:'上海 · 安义夜巷',targetUrl:'https://tuchong.com/27380778/119361858/#image1180054715'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/669463659.jpg',time:'2022.12.11',event:'上海 · 安义夜巷',targetUrl:'https://tuchong.com/27380778/119361858/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1284846709.jpg',time:'2022.12.11',event:'上海 · 安义夜巷',targetUrl:'https://tuchong.com/27380778/119361858/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/670643691.jpg',time:'2022.12.11',event:'上海 · 安义夜巷',targetUrl:'https://tuchong.com/27380778/119361858/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1083257953.jpg',time:'2022.12.11',event:'上海 · 安义夜巷',targetUrl:'https://tuchong.com/27380778/119361858/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/943797334.jpg',time:'2022.12.11',event:'上海 · 安义夜巷',targetUrl:'https://tuchong.com/27380778/119361858/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/729429124.jpg',time:'2022.12.11',event:'上海 · 安义夜巷',targetUrl:'https://tuchong.com/27380778/119361858/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/752956436.jpg',time:'2022.12.11',event:'上海 · 安义夜巷',targetUrl:'https://tuchong.com/27380778/119361858/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/955331452.jpg',time:'2022.11.12',event:'上海 · 闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/797651877.jpg',time:'2022.11.12',event:'上海 · 闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/#image797651877'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/881275687.jpg',time:'2022.11.12',event:'上海 · 闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/#image881275687'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1176581093.jpg',time:'2022.11.12',event:'上海 · 闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/#image1176581093'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1037906958.jpg',time:'2022.11.12',event:'上海 · 闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/#image1037906958'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1149514728.jpg',time:'2022.11.12',event:'上海 · 闵浦大桥',targetUrl:'https://tuchong.com/27380778/118543071/#image1149514728'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1082995398.jpg',time:'2022.10.28',event:'眉山',targetUrl:'https://tuchong.com/27380778/118190918/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/915092270.jpg',time:'2022.10.22',event:'一叶知秋',targetUrl:'https://tuchong.com/27380778/117868689/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1285305025.jpg',time:'2022.10.18',event:'the model 3 performance ',targetUrl:'https://tuchong.com/27380778/117796336/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1038102939.jpg',time:'2022.10.01',event:'迪士尼王子回家记',targetUrl:'https://tuchong.com/27380778/117243795/'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1009136084.jpg',time:'2022.10.01',event:'迪士尼王子回家记',targetUrl:'https://tuchong.com/27380778/117243795/#image1009136084'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/939930038.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1016738039.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/980562277.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/833761922.jpg',time:'2022.10.01',event:'迪士尼王子回家记'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1281045229.jpg',time:'2022.09.18',event:'一组清凉☁️'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1258303931.jpg',time:'2022.09.18',event:'一组清凉☁️'},
-  {imgUrl:'https://photo.tuchong.com/27380778/f/1046688358.jpg',time:'2022.09.18',event:'一只叫Amy的流氓🐱🐱'},
-]
-
-insertPhoto({src:"https://photo.tuchong.com/27380778/f/1046688358.jpg",blankSrc:"222"})
-function handleTarget(targetUrl:string){
-  window.open(targetUrl,'_blank')
-}
-onMounted(() => {
+onMounted(async () => {
+  // addEventListener  resize
+  useScreenResize();
   //设置延迟加载图片
   setTimeout(
     () =>
       $("img.lazy").lazyload({
         effect: "fadeIn",
       }),
-    2000
+    1000
   );
 });
+
+function handleTarget(targetUrl?: string) {
+  targetUrl && window.open(targetUrl, "_blank");
+}
 </script>
 
 <style lang="less" scoped>

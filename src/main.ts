@@ -1,4 +1,4 @@
-import { createApp } from "vue";
+import { createApp,createRenderer } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -46,19 +46,5 @@ app.config.globalProperties.$filters = {
 };
 
 
-//禁止使用F12
-window.onkeydown =
-  window.onkeyup =
-     (event)=> {
-      // 判断是否按下F12，F12键码为123
-      if (event.keyCode === 123) {
-        event.preventDefault(); // 阻止默认事件行为
-        notification["warning"]({
-          message: "F12被禁用",
-          placement: "bottomRight",
-        });
-        event.returnValue = false;
-      }
-    };
 
 app.mount("#app");
