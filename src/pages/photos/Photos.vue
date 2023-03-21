@@ -54,6 +54,7 @@ import { data } from "./config";
 onMounted(async () => {
   // addEventListener  resize
   useScreenResize();
+  
   //设置延迟加载图片
   setTimeout(
     () =>
