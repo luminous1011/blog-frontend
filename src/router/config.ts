@@ -56,7 +56,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "root",
-    component:()=>import('@/pages/root')
+    component: () => import("@/pages/home/Home.vue"),
   },
   {
     path: "/404",
