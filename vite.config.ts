@@ -1,6 +1,7 @@
 import { defineConfig ,loadEnv} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import progress from 'vite-plugin-progress'
 
 const isProd = process.env.NODE_ENV === 'production'
 const productionGzipExtensions = ['js', 'css']
@@ -37,5 +38,6 @@ export default defineConfig(({mode,command})=>({
   },
   plugins: [
     vue(),
+    progress()
   ]
 }))

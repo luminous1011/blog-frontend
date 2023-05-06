@@ -1,4 +1,22 @@
-export const data = [
+interface IPhotoInfo{
+    src:string,
+    shotTime:number,
+    des:string,
+    blankSrc?:string
+}
+
+export const data:IPhotoInfo[] = [
+
+    {src:'https://photo.tuchong.com/27380778/f/1200372080.jpg',shotTime:1679137798000,des:'2023重庆故事',blankSrc:"https://tuchong.com/27380778/122794066/"},
+    {src:'https://photo.tuchong.com/27380778/f/779499449.jpg',shotTime:1679137798000,des:'2023重庆故事',blankSrc:"https://tuchong.com/27380778/122794066/#image779499449"},
+    {src:'https://photo.tuchong.com/27380778/f/1062811768.jpg',shotTime:1679137798000,des:'2023重庆故事',blankSrc:"https://tuchong.com/27380778/122794066/#image1062811768"},
+    {src:'https://photo.tuchong.com/27380778/f/867187245.jpg',shotTime:1679137798000,des:'2023重庆故事',blankSrc:"https://tuchong.com/27380778/122794066/#image867187245"},
+    {src:'https://photo.tuchong.com/27380778/f/834287765.jpg',shotTime:1679137798000,des:'2023重庆故事',blankSrc:"https://tuchong.com/27380778/122794066/#image834287765"},
+    {src:'https://photo.tuchong.com/27380778/f/932460877.jpg',shotTime:1679137798000,des:'2023重庆故事',blankSrc:"https://tuchong.com/27380778/122794066/#image932460877"},
+    {src:'https://photo.tuchong.com/27380778/f/725498263.jpg',shotTime:1679137798000,des:'2023重庆故事',blankSrc:"https://tuchong.com/27380778/122794066/#image725498263"},
+   
+    {src:'https://photo.tuchong.com/27380778/f/1200043744.jpg',shotTime:1676372998000,des:'shot on eos r6',blankSrc:'https://tuchong.com/27380778/121664136/'},
+
     {src:'https://photo.tuchong.com/27380778/f/1053766879.jpg',shotTime:1670754048000,des:'上海 · 安义夜巷',blankSrc:'https://tuchong.com/27380778/119361858/'},
     {src:'https://photo.tuchong.com/27380778/f/1180054715.jpg',shotTime:1670754048000,des:'上海 · 安义夜巷',blankSrc:'https://tuchong.com/27380778/119361858/#image1180054715'},
     {src:'https://photo.tuchong.com/27380778/f/669463659.jpg',shotTime:1670754048000,des:'上海 · 安义夜巷',blankSrc:'https://tuchong.com/27380778/119361858/#image669463659'},
