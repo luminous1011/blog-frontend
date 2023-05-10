@@ -1,6 +1,6 @@
 <template>
-  <div class="code"  v-bind="$attrs">
-    <highlightjs :code="code"  >
+  <div class="code" v-bind="$attrs">
+    <highlightjs :code="code">
     </highlightjs>
   </div>
 </template>
@@ -13,13 +13,18 @@ const props = defineProps({
 const { code } = toRefs(props);
 </script>
 <style>
-code.hljs{
-  line-height: 1.2;
+code.hljs {
+  line-height: 1.75;
+  background: #f8f8f8;
   border-radius: 5px;
-  color: #f8f8f2;
+  /* color: #f8f8f2; */
 }
-code{
-  font-size: 16px;
-  font-family: Menlo,Monaco,Consolas,Courier New,monospace;
+
+code {
+  font-size: 12px;
+  padding: 15px 12px;
+  font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', 'monospace';
+  color: #333;
+  background: #f8f8f8;
 }
 </style>

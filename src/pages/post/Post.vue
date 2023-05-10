@@ -135,6 +135,7 @@ const meta = { date: "2022-07-20", comments: 8, view: 122 };
 main.index-page {
   padding: 30px 25px 20px;
   box-shadow: 0 0 55px 0 rgba(0, 0, 0, 0.03);
+  background: #fff;
 }
 .post-wrapper {
   max-width: unset;

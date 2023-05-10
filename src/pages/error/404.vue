@@ -3,7 +3,9 @@
     <h1> To be coming soon . . . </h1>
   </div>
 </template>
+<script setup lang="ts">
 
+</script>
 
 <style lang="less">
 .page-404-wrapper{

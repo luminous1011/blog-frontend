@@ -6,7 +6,7 @@ interface IPhotoInfo{
 }
 
 export const data:IPhotoInfo[] = [
-
+    {src:'https://photo.tuchong.com/27380778/f/670972241.jpg',shotTime:1683595514000,des:'五一假期',blankSrc:'https://tuchong.com/27380778/123346646/'},
     {src:'https://photo.tuchong.com/27380778/f/1200372080.jpg',shotTime:1679137798000,des:'2023重庆故事',blankSrc:"https://tuchong.com/27380778/122794066/"},
     {src:'https://photo.tuchong.com/27380778/f/779499449.jpg',shotTime:1679137798000,des:'2023重庆故事',blankSrc:"https://tuchong.com/27380778/122794066/#image779499449"},
     {src:'https://photo.tuchong.com/27380778/f/1062811768.jpg',shotTime:1679137798000,des:'2023重庆故事',blankSrc:"https://tuchong.com/27380778/122794066/#image1062811768"},

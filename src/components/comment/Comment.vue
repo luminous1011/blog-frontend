@@ -1,53 +1,25 @@
 <template>
   <div class="comment-content" id="comment">
     <div class="comments clearfix">
-      <Form
-        v-show="!tempCid"
-        :form="form"
-        :handleClick="handleClick"
-        :showUsrInfo="showUsrInfo"
-        :hasLocal="hasLocal"
-        :handleShowUsrInfo="handleShowUsrInfo"
-      />
+      <Form v-show="!tempCid" :form="form" :handleClick="handleClick" :showUsrInfo="showUsrInfo" :hasLocal="hasLocal"
+        :handleShowUsrInfo="handleShowUsrInfo" />
       <div class="comment-list" id="comment-list">
         <div class="loading" v-show="spinning">
           <a-spin :spinning="spinning" />
         </div>
         <ul>
           <li v-for="item in data" :key="item.cid">
-            <CommentView
-              :item="item"
-              :cid="item.cid"
-              :handleReply="handleReply"
-            >
-              <Form
-                :form="form"
-                :handleClick="handleClick"
-                :showUsrInfo="showUsrInfo"
-                :hasLocal="hasLocal"
-                :handleShowUsrInfo="handleShowUsrInfo"
-                v-if="tempCid === item.cid"
-                :isReply="isReply"
-                :cancelReply="cancelReply"
-              />
+            <CommentView :item="item" :cid="item.cid" :handleReply="handleReply">
+              <Form :form="form" :handleClick="handleClick" :showUsrInfo="showUsrInfo" :hasLocal="hasLocal"
+                :handleShowUsrInfo="handleShowUsrInfo" v-if="tempCid === item.cid" :isReply="isReply"
+                :cancelReply="cancelReply" />
             </CommentView>
-            <CommentView
-              v-for="child in item.children"
-              :item="child"
-              :handleReply="handleReply"
-              :cid="item.cid"
-              :key="child.cid"
-            >
-              <Form
-                :form="form"
-                :handleClick="handleClick"
-                :showUsrInfo="showUsrInfo"
-                :hasLocal="hasLocal"
-                :handleShowUsrInfo="handleShowUsrInfo"
-                v-if="tempCid === child.cid"
-                :isReply="isReply"
-                :cancelReply="cancelReply"
-            /></CommentView>
+            <CommentView v-for="child in item.children" :item="child" :handleReply="handleReply" :cid="item.cid"
+              :key="child.cid">
+              <Form :form="form" :handleClick="handleClick" :showUsrInfo="showUsrInfo" :hasLocal="hasLocal"
+                :handleShowUsrInfo="handleShowUsrInfo" v-if="tempCid === child.cid" :isReply="isReply"
+                :cancelReply="cancelReply" />
+            </CommentView>
           </li>
         </ul>
       </div>
@@ -206,17 +178,18 @@ function getCommentList(cb?: Function) {
     path: location.pathname,
     page: pagination.page,
     pageSize: pagination.pageSize,
-  }).then((res) => {
-    console.error(res);
-    
+  }).then((res: any) => {
+    if (res && res.code === 0) {
+      const { list = [], pageNum, pageSize, total } = res?.data?.data ?? {};
+      list.forEach((item: IComment) => {
+        data.push(item);
+      });
+      pagination.page = pageNum;
+      pagination.pageSize = pageSize;
+      pagination.total = total;
+    }
     spinning.value = false;
-    const { list = [], pageNum, pageSize, total } = res?.data?.data ?? {};
-    list.forEach((item: IComment) => {
-      data.push(item);
-    });
-    pagination.page = pageNum;
-    pagination.pageSize = pageSize;
-    pagination.total = total;
+
   });
 }
 function handleShowUsrInfo() {
@@ -236,6 +209,7 @@ function cancelReply() {
 
 <style lang="less">
 @import "./index.less";
+
 .loading {
   display: flex;
   justify-content: center;
