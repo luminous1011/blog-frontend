@@ -18,8 +18,6 @@ import AdminHeader from "@/components/header";
 import AdminFooter from "@/components/footer";
 import TabsView from "@/components/tabs";
 
-
-
 import { computed } from "vue";
 import { useStore } from "vuex";
 

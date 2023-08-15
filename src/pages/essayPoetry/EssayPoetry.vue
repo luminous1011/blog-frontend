@@ -8,13 +8,13 @@
       <ul>
         <li v-for="item in essayList" :key="item.infoId">
           <div class="comment">
-            <div class="comment_img" v-if="item.img">
+            <div class="comment_img" v-if="item.url">
               <p>
-                <img src="../../assets/2.jpg" alt="" />
+                <img :src="item.url" alt="" />
               </p>
             </div>
             <div class="comment_content" v-if="item.text">
-              <p v-html="item.text"></p>
+              <p v-text="item.text"></p>
             </div>
             <div class="comment_footer">
               <span class="author">
@@ -37,8 +37,6 @@
 
 <script lang="ts" setup>
 import { defineAsyncComponent, onMounted, watch } from "vue";
-// import img from "@/assets/2.jpg";
-import { getEssayList, insertEssay } from "@/service/informalEssay";
 import UseGetEssayList from "./useGetEssayList";
 import {timestampToTime} from '@/utils/time'
 const Meta = defineAsyncComponent(() => import("@/components/meta"));
@@ -59,8 +57,7 @@ onMounted(async () => {
   });
 });
 
-// insertEssay(`<b class="red">君埋泉下泥销骨，我寄人间雪满头 </b> 
-// `,'知乎摘录')
+
 </script>
 
 <style lang="less">

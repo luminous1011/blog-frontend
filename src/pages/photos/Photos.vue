@@ -1,13 +1,11 @@
 <template>
-  <div
-    id="grid"
-    class="clearfix"
-    data-masonry='{ "columnWidth": 0, "itemSelector": ".grid-item" }'
-  >
+  <div id="grid" class="clearfix" data-masonry='{ "columnWidth": 0, "itemSelector": ".grid-item" }'>
     <div class="grid-sizer"></div>
     <div class="grid-item">
       <div class="image_info">
-        <h1><center>🍃</center></h1>
+        <h1>
+          <center>🍃</center>
+        </h1>
         <p>
           不是每个人都能成为摄影师，但好的摄影作品可以出自于任何人。
           <br />
@@ -22,20 +20,10 @@
         </p>
       </div>
     </div>
-    <div
-      class="grid-item"
-      v-for="(item, index) in data"
-      :key="index"
-      @click="handleTarget(item.blankSrc)"
-    >
-      <div :class="{pointer:item.blankSrc}">
-        <div >
-          <img
-            class="lazy"
-            @load="load"
-            src="https://rawchen.com/loading.gif"
-            :data-original="item.src"
-          />
+    <div class="grid-item" v-for="(item, index) in data" :key="index" @click="handleTarget(item.blankSrc)">
+      <div :class="{ pointer: item.blankSrc }">
+        <div>
+          <img class="lazy" @load="load" :src="`${CDN_BASE_URL}/images/photos/loading.gif`" :data-original="item.src" />
         </div>
       </div>
       <div class="image_info">
@@ -51,10 +39,12 @@ import { onMounted } from "vue";
 import { photoFormatTimestamp } from "@/utils/time";
 import { data } from "./config";
 
+const CDN_BASE_URL = import.meta.env.VITE_CDN_BASE_URL
+
 onMounted(async () => {
   // addEventListener  resize
   useScreenResize();
-  
+
   //设置延迟加载图片
   setTimeout(
     () =>

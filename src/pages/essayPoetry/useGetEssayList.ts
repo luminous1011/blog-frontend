@@ -6,7 +6,7 @@ interface IEssay {
   source: string;
   createTime: number;
   updateTime: number;
-  img?: string;
+  url: string;
 }
 
 interface IPagination {

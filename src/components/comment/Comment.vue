@@ -179,7 +179,7 @@ function getCommentList(cb?: Function) {
     page: pagination.page,
     pageSize: pagination.pageSize,
   }).then((res: any) => {
-    if (res && res.code === 0) {
+    if (res && res.data&&res.data.code===0) {
       const { list = [], pageNum, pageSize, total } = res?.data?.data ?? {};
       list.forEach((item: IComment) => {
         data.push(item);

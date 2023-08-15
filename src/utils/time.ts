@@ -8,13 +8,10 @@ const ONE_YEAR = 31104000000;
 export function timestampToTime(timestamp: number, temp?: string) {
   const date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
   const Y = date.getFullYear() + "-";
-  const M =
-    (date.getMonth() + 1 < 10
-      ? "0" + (date.getMonth() + 1)
-      : date.getMonth() + 1) + "-";
-  const D = date.getDate() + " ";
-  const h = date.getHours() + ":";
-  const m = date.getMinutes() + ":";
+  const M = (date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + "-";
+  const D = date.getDate() < 10 ? "0" + date.getDate() + " " : date.getDate() + " ";
+  const h = date.getHours() < 10 ? "0" + date.getHours() + ":" : date.getHours() + ":";
+  const m = date.getMinutes() < 10 ? "0" + date.getMinutes() + ":" : date.getMinutes() + ":";
   const s = date.getSeconds();
   if (temp === "s") {
     return Y + M + D + h + m.slice(0, m.length - 1);
@@ -42,6 +39,11 @@ export function commentFormatTime(timestamp: number) {
   }
 }
 
+/**
+ * 
+ * @param timestamp format M月d日
+ * @returns 
+ */
 function monthDay(timestamp: number) {
   const date = new Date(timestamp);
 
@@ -53,6 +55,11 @@ function monthDay(timestamp: number) {
   return M + D;
 }
 
+/**
+ * 
+ * @param timestamp format h:m
+ * @returns 
+ */
 function hourMinute(timestamp: number) {
   const date = new Date(timestamp);
   const h = date.getHours() + ":";
@@ -60,6 +67,11 @@ function hourMinute(timestamp: number) {
   return h + m;
 }
 
+/**
+ * 
+ * @param timestamp fomart yyyy.MM.dd
+ * @returns 
+ */
 export function photoFormatTimestamp(timestamp: number) {
   const date = new Date(timestamp);
 
@@ -68,6 +80,9 @@ export function photoFormatTimestamp(timestamp: number) {
     date.getMonth() + 1 < 10
       ? "0" + (date.getMonth() + 1)
       : date.getMonth() + 1;
-  const D = date.getDate();
+  let D: string | number = date.getDate();
+  if (D < 10) {
+    D = '0' + D
+  }
   return `${Y}.${M}.${D}`;
 }
