@@ -69,10 +69,10 @@ function hourMinute(timestamp: number) {
 
 /**
  * 
- * @param timestamp fomart yyyy.MM.dd
+ * @param timestamp fomart yyyy.MM.dd 
  * @returns 
  */
-export function photoFormatTimestamp(timestamp: number) {
+export function photoFormatTimestamp(timestamp: number, temp: string) {
   const date = new Date(timestamp);
 
   const Y = date.getFullYear();
@@ -84,5 +84,5 @@ export function photoFormatTimestamp(timestamp: number) {
   if (D < 10) {
     D = '0' + D
   }
-  return `${Y}.${M}.${D}`;
+  return `${Y}${temp}${M}${temp}${D}`;
 }

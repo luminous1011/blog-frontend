@@ -15,6 +15,9 @@ const COMMENT_REPLY = `${BASE_URL}/comment/replyComment`;
 const PHOTO_LIST = `${BASE_URL}/photo${LIST}`;
 const PHOTO_INSERT = `${BASE_URL}/photo${INSERT}`;
 
+const PAGE_DATA = `${BASE_URL}/page/getPageData`;
+
+
 export {
   MUSIC_BASE_URL,
   ESSAY_LIST,
@@ -24,4 +27,5 @@ export {
   COMMENT_REPLY,
   PHOTO_LIST,
   PHOTO_INSERT,
+  PAGE_DATA
 };

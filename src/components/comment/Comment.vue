@@ -41,6 +41,7 @@ import {
   onMounted,
   watch,
 } from "vue";
+import { defineProps, toRefs } from "vue";
 import { IComment, IForm } from "./type";
 import {
   COMMENT_USER_BLOG,
@@ -53,6 +54,7 @@ import {
   getExploreVersion,
 } from "@/utils/utils";
 import { addComment, getCommentsList, replyComment } from "@/service/comment";
+import { useStore } from "vuex";
 
 const Form = defineAsyncComponent(() => import("./components/Form.vue"));
 const CommentView = defineAsyncComponent(
@@ -72,6 +74,7 @@ const replyId = ref("");
 const showUsrInfo = ref(true);
 const isReply = ref(true);
 const spinning = ref(true);
+const store = useStore()
 let hasLocal: ComputedRef<boolean | null>;
 //分页器
 const pagination = reactive<IPagination>({
@@ -83,10 +86,12 @@ const pagination = reactive<IPagination>({
 const data = reactive<IComment[]>([]);
 const fromCid = ref("");
 const tempCid = ref("");
+
 const cb = () => {
   const target = document.querySelector(`#comment`);
   target && target.scrollIntoView();
 };
+
 const form = reactive<IForm>({
   name: decodeURIComponent(
     window.atob(localStorage.getItem(COMMENT_USER_NAME) || "")
@@ -124,7 +129,7 @@ async function handleClick() {
     email: form.email,
     blogUrl: form.blogUrl,
     comments: form.comment.trim(),
-    path: location.pathname,
+    path: store.state.meta.pageId,
     system,
     browser,
     browserIcon,
@@ -154,32 +159,30 @@ hasLocal = computed(() => {
     return true;
   return false;
 });
+
 watchEffect(() => {
   if (hasLocal.value) {
     return (showUsrInfo.value = false);
   }
   showUsrInfo.value = true;
 });
-onMounted(async () => {
-  await getCommentList();
-  watch(
-    () => pagination.page,
-    async () => {
-      await getCommentList(cb);
-    }
-  );
-});
+watch(
+  () => [pagination.page, store.state.meta.pageId],
+  async () => {
+    await getCommentList(cb);
+  }
+);
 
 function getCommentList(cb?: Function) {
   cb && cb();
   spinning.value = true;
   data.splice(0, data.length);
   getCommentsList({
-    path: location.pathname,
+    path: store.state.meta.pageId,
     page: pagination.page,
     pageSize: pagination.pageSize,
   }).then((res: any) => {
-    if (res && res.data&&res.data.code===0) {
+    if (res && res.data && res.data.code === 0) {
       const { list = [], pageNum, pageSize, total } = res?.data?.data ?? {};
       list.forEach((item: IComment) => {
         data.push(item);

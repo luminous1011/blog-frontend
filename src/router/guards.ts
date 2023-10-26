@@ -3,9 +3,12 @@ import { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
 import { IBootstrapProps } from "@/interface/bootstrap";
 import "nprogress/nprogress.css";
 import { Store } from "vuex";
+import { getPageDataById } from "@/service/page";
 
 NProgress.configure({ showSpinner: false });
-const DARK_HEADERS = ["/photos","/root"];
+
+const META_PAGES = ['/about', "/friends", '/essaypoetry', '/music']
+const DARK_HEADERS = ["/photos", "/root"];
 /**
  * 进度条开始
  * @param to
@@ -18,12 +21,12 @@ const progressStart = (
   next: NavigationGuardNext,
   options: IBootstrapProps
 ) => {
-  
+
   if (!NProgress.isStarted()) {
     NProgress.start();
     // console.error(1);
-    console.error(to,from,);
-    
+    console.error(to, from,);
+
   }
   next();
   // console.error(2);
@@ -33,11 +36,13 @@ const progressStart = (
  * 进度条结束
  * @param store
  */
-const progressDone = (store: Store<object>) => {
+const progressDone = async (store: Store<object>) => {
+  const res = META_PAGES.includes(location.pathname) ? await getPageDataById(location.pathname) : null
+  await res && store.commit("setMeta", res?.data?.data??{})
+  await store.commit("setMenuState", false);
+
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
-  store.commit("setMenuState", false);
-  console.error(location.pathname);
 
   NProgress.done();
 };
@@ -49,7 +54,6 @@ const changeHeaderTheme = (
   options: IBootstrapProps
 ) => {
   const { store } = options;
-console.error(to.fullPath);
 
   if (DARK_HEADERS.includes(to.path)) {
     store.commit("setTheme", "cus-header-dark");

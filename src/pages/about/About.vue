@@ -3,7 +3,7 @@
     <div class="about container">
       <header>
         <Title>关于</Title>
-        <Meta class="item_meta" :meta="meta" />
+        <Meta class="item_meta" />
       </header>
       <main>
         <div>
@@ -14,10 +14,7 @@
           </p>
         </div>
         <a :href="GITHUB_CONTACT_URL" target="_blank">
-          <img
-            id="githubChart"
-            :src="GITHUB_CHART_URL"
-          />
+          <img id="githubChart" :src="GITHUB_CHART_URL" />
         </a>
         <div class="about_contact clearfix">
           <a :href="QQ_CONTACT_URL" target="_blank">
@@ -34,8 +31,8 @@
           </a>
           <a target="_blank">
             <div class="wechat">
-              <!-- <span class="content">luminous_chat</span> -->
-              <span class="content">********</span>
+              <span class="content">luminous_chat</span>
+              <!-- <span class="content">********</span> -->
               <i class="fa fa-wechat"></i>
             </div>
           </a>
@@ -46,8 +43,7 @@
         <p>如侵犯他人著作权、名誉权、隐私权及肖像权等请联系本站删除。</p>
       </footer>
     </div>
-    <Comment />
-    <!-- <Pagination /> -->
+    <Comment  />
   </div>
 </template>
 
@@ -55,15 +51,15 @@
 import Meta from "@/components/meta";
 import Title from "@/components/title";
 import Comment from "@/components/comment";
-import Pagination from "@/components/pagination";
 import {
   GITHUB_CHART_URL,
   GITHUB_CONTACT_URL,
   MAIL_CONTACT_URL,
   QQ_CONTACT_URL,
 } from "@/utils/utils";
+import { computed, } from "vue";
 
-const meta = { date: "2022-07-20", comments: 8, view: 122 };
+
 </script>
 
 <style lang="less">

@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="image_info">
-        {{ photoFormatTimestamp(item.shotTime) }} {{ item.des }}
+        {{ photoFormatTimestamp(item.shotTime,'.') }} {{ item.des }}
       </div>
     </div>
   </div>
