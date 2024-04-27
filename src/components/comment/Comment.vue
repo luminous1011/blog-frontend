@@ -41,7 +41,7 @@ import {
   onMounted,
   watch,
 } from "vue";
-import { defineProps, toRefs } from "vue";
+import { getMeta } from "@/router/guards";
 import { IComment, IForm } from "./type";
 import {
   COMMENT_USER_BLOG,
@@ -105,6 +105,10 @@ const form = reactive<IForm>({
   comment: "",
 });
 
+/**
+ * 提交 / 回复 评论 
+ * 
+ */
 async function handleClick() {
   if (!form.name || !form.email || !form.comment) return;
   localStorage.setItem(
@@ -147,6 +151,7 @@ async function handleClick() {
   }
 
   getCommentList(cb);
+  getMeta(store)
   showUsrInfo.value = false;
   form.comment = "";
   cancelReply();

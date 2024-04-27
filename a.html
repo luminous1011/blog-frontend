@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Tencent-TGideas">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>直播</title>
+    <style>
+        *{ margin:0; padding:0; box-sizing:border-box;}
+        html{ max-width:640px; min-width:320px; margin:0 auto;}
+        img{ max-width:100%; vertical-align:middle;}
+        .video_box{ width:100%; position:relative;}
+        .start_video{ width:40px; height:40px; border-radius:50%; background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH4AAAB+CAYAAADiI6WIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2RjFFNEQzQzYwMkExMUU2OTA2RURBNTIyNDYyMzY0NSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2RjFFNEQzRDYwMkExMUU2OTA2RURBNTIyNDYyMzY0NSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjZGMUU0RDNBNjAyQTExRTY5MDZFREE1MjI0NjIzNjQ1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjZGMUU0RDNCNjAyQTExRTY5MDZFREE1MjI0NjIzNjQ1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/oEh8gAAEclJREFUeNrsXQtQVdUa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) no-repeat center center; background-size:100% 100%; cursor:pointer; position:absolute; left:50%; top:50%; -webkit-transform:translate(-50%,-50%); transform:translate(-50%,-50%);}
+        video{ width:100%; vertical-align:middle; object-fit:contain; object-position:left top;}
+    </style>
+</head>
+<body>
+
+
+
+<div><img src="http://pic.qiantucdn.com/58pic/11/32/07/98258PIC8dA.jpg" /></div>
+
+
+
+<div class="video_box">
+    <!--
+        必须加上：
+                x5-video-player-type='h5' x5-video-player-fullscreen='true'　　否则视频还是跳出去 全屏 播放
+                poster="http://ossweb-img.qq.com/images/wefire/act/a20150826kris/bg_poster.jpg"　　否则视频的高度可能会出问题
+    -->
+    <video id="testVideo" x-webkit-airplay="true" webkit-playsinline="true" playsinline="true" preload="auto" x5-video-player-type='h5' x5-video-player-fullscreen='true' src="http://ossweb-img.qq.com/images/wefire/act/a20150826kris/v1.mp4" poster="http://ossweb-img.qq.com/images/wefire/act/a20150826kris/bg_poster.jpg"></video>
+
+    <span class="start_video"></span>
+</div>
+
+
+
+<div style=" height:300px;">
+    <textarea style=" width:100%; height:100%; padding:10px; background-color:#eee; border:none; outline:none vertical-align:middle; resize:none; appearance:normal;" placeholder="在此输入内容"></textarea>
+</div>
+<div><img src="http://pic.qiantucdn.com/58pic/11/32/07/98258PIC8dA.jpg" /></div>
+
+<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script>
+    //判断是否为安卓设备
+    function isAndroid(){
+        var u = navigator.userAgent;
+        if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
+            return true;
+        }
+    }
+    var $video = $('#testVideo');
+    $(function(){
+        $('.start_video').on("touchstart",function(){
+            $(this).hide();
+            $video[0].play();
+        });
+        if(isAndroid()){
+            $video.css('display','none').after('<canvas id="testCanvas" style="width:100%; vertical-align:middle;"></canvas>');
+            /*以上配置 安卓 机解所需元素及相关属性*/
+            var videoW , videoH;
+            setTimeout(function(){
+                videoW = $video.width() * 3;
+                videoH = $video.height() * 3;
+                TestCanvas.width = videoW;
+                TestCanvas.height = videoH;
+
+                setCanvasStartImg();
+                //之所以这里要播放下，是因为经过测试，第一次点击CANVAS时，视频播放又立即停止了
+                TestVideo.play();
+                TestVideo.pause();
+
+                console.log(videoW);
+                console.log(videoH);
+                console.log(TestVideo.width);
+                console.log(TestVideo.height);
+            },100);
+            //设置CANVAS初始画面（视频封面）
+            function setCanvasStartImg(){
+                var plsterImgSrc = $video.attr('poster');
+                if(plsterImgSrc){
+                    var plsterImg = new Image();
+                    plsterImg.src = plsterImgSrc;
+                    plsterImg.onload = function(){
+                        TestCanvas2D.drawImage(plsterImg,0,0,videoW,videoH);
+                    }
+                }
+            }
+
+            /*以下是渲染CANVAS画布中的视频*/
+
+            //获取video
+            var TestVideo=document.getElementById("testVideo");
+            //获取canvas画布
+            var TestCanvas=document.getElementById("testCanvas");
+            //设置画布
+            var TestCanvas2D=TestCanvas.getContext('2d');
+            //设置setinterval定时器
+            var TestVideoTimer=null;
+            //监听播放
+            TestVideo.addEventListener('play',function() {
+                $('.start_video').hide();
+                TestVideoTimer=setInterval(function() {
+                    TestCanvas2D.drawImage(TestVideo,0,0,videoW,videoH);
+                },20);
+
+            },false);
+            //监听暂停
+            TestVideo.addEventListener('pause',function() {
+                clearInterval(TestVideoTimer);
+                $('.start_video').show();
+            },false);
+            //监听结束
+            TestVideo.addEventListener('ended',function() {
+                clearInterval(TestVideoTimer);
+                $('.start_video').show();
+            },false);
+        }else{
+            $video.attr('controls','controls');
+        }
+
+    });
+</script>
+</body>
+</html>

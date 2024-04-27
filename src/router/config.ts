@@ -64,7 +64,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/error/404.vue"),//首页暂代404
   },
   {
-      path: "/:error*",
+      // path: "/:error*",
+      path: "/:pathMatch(sso)",
       redirect:"/404"
   },
 ];

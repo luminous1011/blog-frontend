@@ -9,6 +9,17 @@ NProgress.configure({ showSpinner: false });
 
 const META_PAGES = ['/about', "/friends", '/essaypoetry', '/music']
 const DARK_HEADERS = ["/photos", "/root"];
+
+
+/**
+ * 获取页面基本信息 （浏览量 / 评论量 / 创建日期） 
+ * @param store 
+ */
+export async function getMeta(store: Store<object>) {
+  const res = META_PAGES.includes(location.pathname) ? await getPageDataById(location.pathname) : null
+  await res && store.commit("setMeta", res?.data?.data ?? {})
+}
+let toURL
 /**
  * 进度条开始
  * @param to
@@ -29,7 +40,6 @@ const progressStart = (
 
   }
   next();
-  // console.error(2);
 };
 
 /**
@@ -37,8 +47,7 @@ const progressStart = (
  * @param store
  */
 const progressDone = async (store: Store<object>) => {
-  const res = META_PAGES.includes(location.pathname) ? await getPageDataById(location.pathname) : null
-  await res && store.commit("setMeta", res?.data?.data??{})
+  await getMeta(store)
   await store.commit("setMenuState", false);
 
   document.documentElement.scrollTop = 0;
